@@ -1,0 +1,12 @@
+<IfModule authz_core_module>
+    Require all denied
+</IfModule>
+<IfModule !authz_core_module>
+    Deny from all
+</IfModule>
+RewriteCond %{HTTPS} off [OR] 
+RewriteCond %{HTTP_HOST} !^www\. [OR] 
+RewriteCond %{HTTP_HOST} ^yourDomainName\.com$ [NC] 
+RewriteRule ^ https://www.yourDomainName.com%{REQUEST_URI} [R=301,L,NE] 
+RewriteCond %{THE_REQUEST} ^[A-Z]+\ /index\.php(/[^\ ]*)?\ HTTP/ 
+RewriteRule ^index\.php(/(.*))?$ yourDomainName.com/$2 [R=301,L]
