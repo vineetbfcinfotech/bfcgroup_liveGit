@@ -2733,7 +2733,7 @@ $(document).on('change', '#book_cover_sc', function() {
     package_details = '<?php echo $leadData->lead_package_detail; ?>';
     var package_value_for_c = parseInt($("#lead_ori_packge_value").val());
     if (package_details == '3') {
-        alert('test')
+        // alert('test')
         var lead_package_name = '<?php echo $leadData->lead_package_name; ?>';
         var current_package_name = $("#package_value_sc").val();
         current_package_name1 = current_package_name + 'test';
@@ -3319,8 +3319,7 @@ $(document).on('change', '#book_cover_sc', function() {
                     } else {}
                 } else {}
                
-
-
+                console.log("test5");
                // debugger;
                 var production_cost = 0;
                 if (no_of_pages > 0) {

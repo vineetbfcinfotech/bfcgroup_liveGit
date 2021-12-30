@@ -194,23 +194,26 @@ session_start();
                            
                         </div>
                         <div class="row aquired_data" style="<?php if($categoryStatus == "39"){ ?>display: block;<?php }else{ ?> display: none; <?php } ?>">
+                    <?php 
+                    if( (isset($compare_id)) && ($compare_id->id !='')) { ?>
                         <div class="col-md-6">
                             <div class="form-group" app-field-wrapper="package_cost">
                                 <label for="select_package" class="control-label">Select Package</label>
-                                <select name="select_package" id="package_sel">
+                                <select name="select_package" id="package_sel" <?php if($lead_status ==1 || $lead_status==2 || $lead_status==3 ){ echo "disabled"; }?> >
                                 <option value="">Select Package</option>
-                                <option value="<?= $leadst->id; ?>">First Package</option>
-                                <?php 
-                                if( (isset($compare_id)) && ($compare_id->id !='')) { ?>
-                                <option value="<?= $compare_id->id; ?>">Second Package</option>
-                                <?php } ?>
+                                <option value="1">First Package</option>
+                                <option value="2">Second Package</option>
                                 </select>
+                                <input type="hidden" name="second_pac_id" value="<?= $compare_id->id; ?>">
+                                <input type="button" class="btn btn-primary" id="sel_pack_btn" value="Select Package">
                             </div>
                         </div>
-                        <div id="first_package" style="display: none;">
+                    <?php } ?>
+                        <div id="first_package" style="display: Block;">
                                    
                         <div class="col-md-6">
                                   <div class="form-group" app-field-wrapper="package_cost">
+                                      <input type="hidden" name="first_pac_id" value="<?= $lead_id; ?>">
                                      <label for="package_cost" class="control-label">Package cost</label>
                                      <input <?php if($lead_status ==1 || $lead_status==2 || $lead_status==3 ){ echo "disabled"; }?> type="text" id="package_cost" name="package_cost" class="form-control" value="<?php if($all_lead_data->cost_of_additional_copy>0){echo $all_lead_data->gross_amt; }else{ echo $all_lead_data->lead_packg_totalamount;} ?>" readonly>
                                   </div>
@@ -257,59 +260,6 @@ session_start();
                                  <?php } ?>
                                </div>
                         </div> 
-                        <?php
-                        if( (isset($compare_id)) && ($compare_id->id !='')) { ?>
-                        <div id="Second_package" style="display: none;">
-                                   
-                        <div class="col-md-6">
-                                  <div class="form-group" app-field-wrapper="package_cost">
-                                     <label for="package_cost" class="control-label">Package cost</label>
-                                     <input <?php if($compare_id->lead_status ==1 || $compare_id->lead_status==2 || $compare_id->lead_status==3 ){ echo "disabled"; }?> type="text" id="package_cost" name="package_cost" class="form-control" value="<?php if($compare_id->cost_of_additional_copy>0){echo $compare_id->gross_amt; }else{ echo $compare_id->lead_packg_totalamount;} ?>" readonly>
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <div class="form-group" app-field-wrapper="booking_amount">
-                                      <label for="booking_amount" class="control-label">Booking amount</label>
-                                      <input <?php if($compare_id->lead_status ==1 || $compare_id->lead_status==2 || $compare_id->lead_status==3 ){ echo "disabled"; }?> type="text" id="booking_amount" name="booking_amount" class="form-control"  value="<?php echo $compare_id->lead_booking_amount; ?>" >
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <div class="form-group" app-field-wrapper="finstallment">
-                                      <label for="finstallment" class="control-label">First installment</label>
-                                      <input <?php if($compare_id->lead_status ==1 || $compare_id->lead_status==2 || $compare_id->lead_status==3 ){ echo "disabled"; }?> type="text" id="finstallment" name="finstallment" class="form-control" disabled value="<?php echo $compare_id->lead_first_installment; ?>" >
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <div class="form-group" app-field-wrapper="final_payment">
-                                      <label for="final_payment" class="control-label">Final payment</label>
-                                      <input <?php if($compare_id->lead_status ==1 || $compare_id->lead_status==2 || $compare_id->lead_status==3 ){ echo "disabled"; }?> type="text" id="final_payment" name="final_payment" class="form-control" disabled value="<?php echo $compare_id->lead_final_payment; ?>" >
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <div class="form-group" app-field-wrapper="receipt">
-                                      <label for="receipt" class="control-label">Upload Receipt</label>
-                                      <input <?php if($compare_id->lead_status ==1 || $compare_id->lead_status==2 || $compare_id->lead_status==3 ){ echo "disabled"; }?> type="file" id="receipt" name="receipt" class="form-control" >
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <div class="form-group" app-field-wrapper="gst_number">
-                                      <label for="gst_number" class="control-label">GST Number</label>
-                                      <input <?php if($compare_id->lead_status ==1 || $compare_id->lead_status==2 || $compare_id->lead_status==3 ){ echo "disabled"; }?> type="text" id="gst_number" name="gst_number" class="form-control" value="<?php echo $compare_id->lead_gst_number; ?>">
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <div class="form-group" app-field-wrapper="State">
-                                      <label for="" class="control-label">State</label>
-                                      <input <?php if($compare_id->lead_status ==1 || $compare_id->lead_status==2 || $compare_id->lead_status==3 ){ echo "disabled"; }?> type="text" id="state" name="state" class="form-control" value="<?php echo $compare_id->state_create_p; ?>">
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <?php if($compare_id->lead_payment_reciept){ ?>
-                                     <img src="<?= base_url();?>assets/images/payment_receipt/<?php echo $compare_id->lead_payment_reciept; ?>" height = "100px" width="100px" />
-                                 <?php } ?>
-                               </div>
-                        </div> 
-                        <?php } ?>
                             </div>
                         <input type="hidden" name="assigned" id="assigned"  value="<?= $assigned; ?>">
 
@@ -358,7 +308,7 @@ session_start();
                           </div>  
                         </div>
                         <hr>
-                       <?php// echo render_input('description', 'custom_lead_remark'); ?>
+                       <?php // echo render_input('description', 'custom_lead_remark'); ?>
                       <div class="row">
                         <div class="col-md-4">
                           <div class="form-group" id="setReminder" app-field-wrapper="Reminder">
@@ -412,10 +362,45 @@ session_start();
         </div>
 <script>
     $(document).ready(function(){
-        $("#package_sel").change(function(){
-            package = $(this).val();
-            alert(package);
-        });
+        $('#sel_pack_btn').click(function(){
+            package = $("#package_sel").val();
+            if(package!=''){
+                alert(package)
+                lead_id = $('#hidden_lead_id').val();
+                // compair_id = $('#second_pac_id').val();
+                compair_id = <?= $compare_id->id; ?>;
+                data = {
+                    'lead_id':lead_id,
+                    'compair_id':compair_id
+                }
+                alert(compair_id)
+                $.ajax({
+                    url:"<?php echo base_url(); ?>admin/leads/swap_package",
+                    method:'POST',
+                    data:data,
+                    success: function(data){
+                        console.log('got data from swap: '+data);
+                    }
+                })
+                // $('#second_package').show();
+                // $('#first_package').hide();
+            }else{
+                alert("Select a Package.");
+                $("#package_sel").focus();
+            }
+        })
+        // $("#package_sel").change(function(){
+        //     package = $(this).val();
+        //     if(package=='1'){
+        //         alert(package);
+        //         $('#first_package').show();
+        //         $('#second_package').hide();
+        //     }else if(package=='2'){
+        //         alert("second is selected.");
+        //         $('#second_package').show();
+        //         $('#first_package').hide();
+        //     }
+        // });
         $("#no_of_books_blocks").hide();
         $("#formSubmit_otb").hide();
         //var id = $('#id').val();
@@ -568,7 +553,6 @@ session_start();
               form_data.append('manuscriptStatus', manuscriptStatus);
               form_data.append('state', state);
               form_data.append('books', books);
-
               $.ajax({
                 url: '<?= base_url();?>admin/leads/update_custom_lead_remark/',
                 type: 'POST',

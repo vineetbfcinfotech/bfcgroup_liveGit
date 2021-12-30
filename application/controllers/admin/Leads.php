@@ -12682,4 +12682,10 @@ public function reffer_lead_check()
         echo '0';
        }
     }
+    public function swap_package(){
+        $lead_id = $this->input->post("lead_id");
+        $compair_id = $this->input->post("compair_id");
+        $data1 = $this->db->select('')
+        echo "test";
+    }
 }
