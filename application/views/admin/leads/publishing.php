@@ -2724,1536 +2724,1505 @@ var package_value_for_c = '';
  });
 var i = 1;
 var package_value_for_c = '';
+$(document).on('change', '#book_cover_sc', function() {
+    if (i == 1) {
+        package_value_for_c = parseInt($("#lead_ori_packge_value").val());
+        i++;
+    }
+    package_details = '';
+    package_details = '<?php echo $leadData->lead_package_detail; ?>';
+    var package_value_for_c = parseInt($("#lead_ori_packge_value").val());
+    if (package_details == '3') {
+        alert('test')
+        var lead_package_name = '<?php echo $leadData->lead_package_name; ?>';
+        var current_package_name = $("#package_value_sc").val();
+        current_package_name1 = current_package_name + 'test';
+        // console.log("package_value_for_c:"+ package_value_for_c +" package_details:"+package_details+" lead_package_name:"+lead_package_name+" current_package_name1:"+current_package_name1);
 
-        $(document).on('change', '#book_cover_sc', function() {
-            if (i==1) {
-                package_value_for_c = parseInt($("#lead_ori_packge_value").val());
-    i++;            }
-                package_details = '';
-              package_details = '<?php echo $leadData->lead_package_detail; ?>';
-              if (package_details=='3') {
+        if (lead_package_name == current_package_name1) {
+            var package_value_for_edit = parseInt($("#lead_ori_packge_value").val());
+            var book_format = $(this).val();
+            var no_of_pages = parseInt($("#number_of_pages_for_sc").val());
+            // var no_of_pages = parseInt($("#number_of_pages_for_sc_for_edit").val());
 
-               
-          alert('test')
-                var lead_package_name = '<?php echo $leadData->lead_package_name; ?>';
-                var current_package_name = $("#package_value_sc").val();
-                current_package_name1 = current_package_name+'test';
-            // console.log("package_value_for_c:"+ package_value_for_c +" package_details:"+package_details+" lead_package_name:"+lead_package_name+" current_package_name1:"+current_package_name1);
-
-                if (lead_package_name == current_package_name1 ) {
-                      var package_value_for_edit = parseInt($("#lead_ori_packge_value").val());
-                 var book_format = $(this).val();
-                var no_of_pages = parseInt($("#number_of_pages_for_sc").val());
-                // var no_of_pages = parseInt($("#number_of_pages_for_sc_for_edit").val());
-
-                var book_size = $('#book_size_sc :selected').text();
-            let booktype=0;
+            var book_size = $('#book_size_sc :selected').text();
+            let booktype = 0;
 
             // alert(book_format);
-      if(book_format=='MultiColor' || book_format=='MultiColor 250 GSM'){
-        // alert('test');
-          if(no_of_pages <= 72){
-            if(book_size =='5*8'){
-              booktype=0.605
-            }else if(book_size =='6*9'){
-              booktype=0.718
-            }else if(book_size =='8*11'){
-              booktype=0.85
-            }else{}
-          }else if(no_of_pages >= 73 && no_of_pages <=96){
-            if(book_size =='5*8'){
-              booktype=0.605
-            }else if(book_size =='6*9'){
-              booktype=0.718
-            }else if(book_size =='8*11'){
-                booktype=0.85
-              }else{}
-          }else if(no_of_pages >= 97 && no_of_pages <=108 ){
-            if(book_size == '5*8'){
-              booktype=0.533
-            }else if(book_size =='6*9'){
-              booktype=0.602
-            }else if(book_size =='8*11'){
-              booktype=0.74
-            }else{}
-          }else if(no_of_pages >= 109 && no_of_pages <=128 ){
-            if(book_size =='5*8'){
-              booktype=0.533
-            }else if(book_size =='6*9'){
-              booktype=0.602
-            }else if(book_size =='8*11'){
-              booktype=0.70
-            }else{}
-          }else if(no_of_pages >= 129 && no_of_pages <=148 ){
-              if(book_size =='5*8'){
-                booktype=0.460
-              }else if(book_size =='6*9'){
-                booktype=0.573
-              }else if(book_size =='8*11'){
-                booktype=0.68
-              }else{}
-          }else if(no_of_pages >= 149 && no_of_pages <=192 ){
-            if(book_size =='5*8'){
-              booktype=0.460
-            }else if(book_size =='6*9'){
-              booktype=0.573
-            }else if(book_size =='8*11'){
-              booktype=0.62
-            }else{}
-          }else if(no_of_pages >= 193 && no_of_pages <=216 ){
-            if(book_size =='5*8'){
-              booktype=0.424
-            }else if(book_size =='6*9'){
-              booktype=0.537
-            }else if(book_size =='8*11'){
-              booktype=0.62
-            }else{}
-          }else if(no_of_pages >= 217 && no_of_pages <=252 ){
-            if(book_size =='5*8'){
-              booktype=0.424
-            }else if(book_size =='6*9'){
-              booktype=0.537
-            }else if(book_size =='8*11'){
-              booktype=0.59
-            }else{}
-          }else if(no_of_pages >= 253 && no_of_pages <=256 ){
-            if(book_size =='5*8'){
-              booktype=0.424
-            }else if(book_size =='6*9'){
-              booktype=0.537
-            }else if(book_size =='8*11'){
-              booktype=0.59
-            }else{}
-          }else if(no_of_pages >= 257 && no_of_pages <=276 ){
-            if(book_size =='5*8'){
-              booktype=0.413
-            }else if(book_size =='6*9'){
-              booktype=0.515
-            }else if(book_size =='8*11'){
-              booktype=0.59
-            }else{}
-          }else if(no_of_pages >= 277 && no_of_pages <=320 ){
-            if(book_size =='5*8'){
-              booktype=0.413
-            }else if(book_size =='6*9'){
-              booktype=0.515
-            }else if(book_size =='8*11'){
-              booktype=0.57
-            }else{}
-          }else if(no_of_pages >= 321 && no_of_pages <=352 ){
-            if(book_size =='5*8'){
-              booktype=0.405
-            }else if(book_size =='6*9'){
-              booktype=0.500
-            }else if(book_size =='8*11'){
-              booktype=0.57
-            }else{}
-          }else if(no_of_pages >= 353 && no_of_pages <=384 ){
-            if(book_size =='5*8'){
-              booktype=0.405
-            }else if(book_size =='6*9'){
-              booktype=0.500
-            }else if(book_size =='8*11'){
-              booktype=0.56
-            }else{}
-          }else if(no_of_pages >= 385 && no_of_pages <=432 ){
-            if(book_size =='5*8'){
-              booktype=0.405
-            }else if(book_size =='6*9'){
-              booktype=0.500
-            }else if(book_size =='8*11'){
-              booktype=0.55
-            }else{}
-          }else if(no_of_pages >= 433 && no_of_pages <=492 ){
-            if(book_size =='8*11'){
-              booktype=0.54
-            }if(book_size =='5*8'){
-              booktype=0.405
-            }else if(book_size =='6*9'){
-              booktype=0.500
-            }else{
-            }
-          }else if(no_of_pages >= 493 && no_of_pages <=548 ){
-            if(book_size =='8*11'){
-              booktype=0.54
-            }if(book_size =='5*8'){
-              booktype=0.405
-            }else if(book_size =='6*9'){
-              booktype=0.500
-            }else{
-            }
-          }else if(no_of_pages >=549 ){
-            if(book_size =='8*11'){
-              booktype=0.54
-            }if(book_size =='5*8'){
-              booktype=0.405
-            }else if(book_size =='6*9'){
-              booktype=0.500
-            }else{
-            }
-          }else{}
-          console.log('test3')
-          var production_cost = no_of_pages * booktype + 8.5;
-                 var prodsubpercentage = production_cost * 0.15;
-          var subsidPrice = production_cost + prodsubpercentage;
-          subsidPrice = parseFloat(subsidPrice).toFixed(2);
-          var cost =  production_cost + (production_cost*40)/100;
-        var amount  = parseInt($("#number_of_complimentary_copies").val())*cost;
-        var  number_additional_copy = $("#additional_author_copies_number").val();
-       var package_value_for_cs = package_value_for_c
-       var val_of_colorrr = 0;
-        if ($('.color_pages').is(":checked")) {
-          var number_of_color = $("#color_pages_number").val();
-         var total_color_par = no_of_pages * 0.30;
-         if (number_of_color <= total_color_par ) {
-         val_of_color = number_of_color*7;
-         val_of_color_addi = val_of_color
-         if ($("#additional_author_copies_number").val() != '') {
-          val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-         }else{
-          val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-         }
-         }else{
-          val_of_color = no_of_pages*7;
-          val_of_color_addi = val_of_color
-          val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-          val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-          amount =0;
-         }
-         if ($("#additional_author_copies_number").val() != '') {
-         package_value_for_cs = package_value_for_c+val_of_colorrr;
-         }else{
-          package_value_for_cs = package_value_for_c+val_of_color;
-         }
-        }else{
-             val_of_color = no_of_pages*7;
-             // alert(no_of_pages)
-             val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-             // alert(val_of_color)
-        }
-       
-        var package_value  = (package_value_for_cs+(package_value_for_cs*0.40))+amount;
-  var additional_author_copy = $("#additional_author_copies_number").val();
-  if ($("#additional_author_copies_number").val() != '') {
-    if ($('.color_pages').is(":checked")) {
-         var val_of_color_of = val_of_color_addi*additional_author_copy
-    }else{
-         var val_of_color_of = additional_author_copy
-        
-    }
-  // var val_of_color_of = val_of_color_addi*additional_author_copy
-  }else{
-    var val_of_color_of = val_of_color*additional_author_copy
-  }
-        val_of_color_of = val_of_color_of+(val_of_color_of*0.15);
-        if ($("#color_pages_number").val() != '') {
-          if (number_of_color <= total_color_par ) {
-            var cost_total1 = subsidPrice*additional_author_copy;
-          }else{
-            var cost_total1 = additional_author_copy;
-          }
-        }else{
-          var cost_total1 = subsidPrice*additional_author_copy;
-        }
-              var cost_total2 =  additional_author_copy*30;
-              var cost_total = parseInt(cost_total1)+parseInt(cost_total2)+parseInt(val_of_color_of);
-     $("#cost_of_additional").val(Math.round(cost_total));
-       $("#package_value").val(Math.round(package_value));
-       $("#less_package_value").val(Math.round(package_value));
-                var total_amount = (package_value * 18) / 100;
-                $("#gst").val(Math.round(total_amount));
-                total_amount_data = total_amount + package_value;
-                $("#total_amount").val(Math.round(total_amount_data));
-                var after_total_additional_copy = cost_total+total_amount_data;
-                $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
-                 var total_amount_d = $("#total_amount").val();
-                 total_amount_d = after_total_additional_copy;
-                                            var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
-                                            var discount_40_ = (40 / 100) * total_amount_d;
-                                            var discount_20 = total_amount_d - (discount_40 + discount_40);
-                                            var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
-                                            var discount_20_1 = ((20 / 100) * total_amount_d);
-                                            $("#first_p1").val(discount_40_)
-                            $("#first_p2").val(discount_40_)
-                            $("#first_p3").val(discount_20_1)
-                                          document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
-                                            document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
-      }else if(book_format == 'Hardbound-Jacket'){
-        // alert('test hadbound')
-            var booktype1 = 0;
-          if(no_of_pages <= 72){
-            if(book_size =='5*8'){
-                      booktype1=0.605
-            }else if(book_size =='6*9'){
-              booktype1=0.718
-                     }else if(book_size =='8*11'){
-              booktype1=0.85
-                        }else{}
-          }else if(no_of_pages >= 73 && no_of_pages <=96){
-            if(book_size =='5*8'){
-                            booktype1=0.605
-            }else if(book_size =='6*9'){
-              booktype1=0.718
-                          }else if(book_size =='8*11'){
-                booktype1=0.85
-              }else{}
-          }else if(no_of_pages >= 97 && no_of_pages <=108 ){
-            if(book_size =='5*8'){
-              booktype1=0.533
-            }else if(book_size =='6*9'){
-              booktype1=0.602
-                          }else if(book_size =='8*11'){
-              booktype1=0.74
-            }else{}
-          }else if(no_of_pages >= 109 && no_of_pages <=128 ){
-            if(book_size =='5*8'){
-              booktype1=0.533
-            }else if(book_size =='6*9'){
-              booktype1=0.602
-            }else if(book_size =='8*11'){
-              booktype1=0.70
-            }else{}
-          }else if(no_of_pages >= 129 && no_of_pages <=148 ){
-              if(book_size =='5*8'){
-                booktype1=0.460
-              }else if(book_size =='6*9'){
-                booktype1=0.573
-              }else if(book_size =='8*11'){
-                booktype1=0.68
-              }else{}
-          }else if(no_of_pages >= 149 && no_of_pages <=192 ){
-            if(book_size =='5*8'){
-              booktype1=0.460
-            }else if(book_size =='6*9'){
-              booktype1=0.573
-            }else if(book_size =='8*11'){
-              booktype1=0.62
-            }else{}
-          }else if(no_of_pages >= 193 && no_of_pages <=216 ){
-            if(book_size =='5*8'){
-              booktype1=0.424
-            }else if(book_size =='6*9'){
-              booktype1=0.537
-            }else if(book_size =='8*11'){
-              booktype1=0.62
-            }else{}
-          }else if(no_of_pages >= 217 && no_of_pages <=252 ){
-            if(book_size =='5*8'){
-              booktype1=0.424
-            }else if(book_size =='6*9'){
-              booktype1=0.537
-            }else if(book_size =='8*11'){
-              booktype1=0.59
-              1
-            }else{}
-          }else if(no_of_pages >= 253 && no_of_pages <=256 ){
-            if(book_size =='5*8'){
-              booktype1=0.424
-            }else if(book_size =='6*9'){
-              booktype1=0.537
-            }else if(book_size =='8*11'){
-              booktype1=0.59
-            }else{}
-          }else if(no_of_pages >= 257 && no_of_pages <=276 ){
-            if(book_size =='5*8'){
-              booktype1=0.413
-            }else if(book_size =='6*9'){
-              booktype1=0.515
-            }else if(book_size =='8*11'){
-              booktype1=0.59
-            }else{}
-          }else if(no_of_pages >= 277 && no_of_pages <=320 ){
-            if(book_size =='5*8'){
-              booktype1=0.413
-            }else if(book_size =='6*9'){
-              booktype1=0.515
-            }else if(book_size =='8*11'){
-              booktype1=0.57
-            }else{}
-          }else if(no_of_pages >= 321 && no_of_pages <=352 ){
-            if(book_size =='5*8'){
-              booktype1=0.405
-            }else if(book_size =='6*9'){
-              booktype1=0.500
-            }else if(book_size =='8*11'){
-              booktype1=0.57
-            }else{}
-          }else if(no_of_pages >= 353 && no_of_pages <=384 ){
-            if(book_size =='5*8'){
-              booktype1=0.405
-            }else if(book_size =='6*9'){
-              booktype1=0.500
-            }else if(book_size =='8*11'){
-              booktype1=0.56
-            }else{}
-          }else if(no_of_pages >= 385 && no_of_pages <=432 ){
-            if(book_size =='5*8'){
-              booktype1=0.405
-            }else if(book_size =='6*9'){
-              booktype1=0.500
-            }else if(book_size =='8*11'){
-              booktype1=0.55
-            }else{}
-          }else if(no_of_pages >= 433 && no_of_pages <=492 ){
-            if(book_size =='8*11'){
-              booktype1=0.54
-            }if(book_size =='5*8'){
-              booktype1=0.405
-            }else if(book_size =='6*9'){
-              booktype1=0.500
-            }else{
-            }
-          }else if(no_of_pages >= 493 && no_of_pages <=548 ){
-            if(book_size =='8*11'){
-              booktype1=0.54
-            }if(book_size =='5*8'){
-              booktype1=0.405
-            }else if(book_size =='6*9'){
-              booktype1=0.500
-            }else{
-            }
-          }else if(no_of_pages >=549 ){
-            if(book_size =='8*11'){
-              booktype1=0.54
-            }if(book_size =='5*8'){
-              booktype1=0.405
-            }else if(book_size =='6*9'){
-              booktype1=0.500
-            }else{
-            }
-          }else{}
-          console.log('test4')
-          var production_cost = no_of_pages * booktype1 + 55;
-              var prodsubpercentage = production_cost * 0.15;
-          var subsidPrice = production_cost + prodsubpercentage;
-          subsidPrice = parseFloat(subsidPrice).toFixed(2);
-// alert(subsidPrice+'Hardbound!1');
-var additional_author_copy = $("#additional_author_copies_number").val();
-var cost_total1 = subsidPrice*additional_author_copy;
-              var cost_total2 =  additional_author_copy*40;
-              var cost_total = cost_total1+cost_total2;
-     $("#cost_of_additional").val(Math.round(cost_total));
-       var cost =  production_cost + (production_cost*40)/100;
-        var amount  = parseInt($("#number_of_complimentary_copies").val())*cost;
-        var package_value  = (package_value_for_edit+(package_value_for_edit*0.40))+amount;
-  //         alert(production_cost);
-  // alert(cost);
-  // alert(amount);
-  // alert(package_value);
-       $("#package_value").val(Math.round(package_value));
-       $("#less_package_value").val(Math.round(package_value));
-                var total_amount = (package_value * 18) / 100;
-                $("#gst").val(Math.round(total_amount));
-                total_amount_data = total_amount + package_value;
-                $("#total_amount").val(Math.round(total_amount_data));
-                 var after_total_additional_copy = cost_total+total_amount_data;
-                $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
-                  var total_amount_d = $("#total_amount").val();
-                   total_amount_d = after_total_additional_copy;
-                                            var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
-                                            var discount_40_ = (40 / 100) * total_amount_d;
-                                            var discount_20 = total_amount_d - (discount_40 + discount_40);
-                                            var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
-                                            var discount_20_1 = ((20 / 100) * total_amount_d);
-                                            $("#first_p1").val(discount_40_)
-                            $("#first_p2").val(discount_40_)
-                            $("#first_p3").val(discount_20_1)
-                                           document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
-                                            document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
-      }
-                }else{
-                  // alert('hello');
-                  // console.log("hello")
-                  
-                    // if package is change but it is edit part
-                      var book_format = $(this).val();
-            var no_of_pages = parseInt($("#number_of_pages_for_sc").val());
-            var book_size = $('#book_size_sc :selected').text();
-           let booktype2=0;
-      if(book_format=='MultiColor' || book_format=='MultiColor 250 GSM'){
-          if(no_of_pages <= 72){
-            if(book_size =='5*8'){
-              booktype2=0.605
-            }else if(book_size =='6*9'){
-              booktype2=0.718
-            }else if(book_size =='8*11'){
-              booktype2=0.85
-            }else{}
-          }else if(no_of_pages >= 73 && no_of_pages <=96){
-            if(book_size =='5*8'){
-              booktype2=0.605
-            }else if(book_size =='6*9'){
-              booktype2=0.718
-            }else if(book_size =='8*11'){
-                booktype2=0.85
-              }else{}
-          }else if(no_of_pages >= 97 && no_of_pages <=108 ){
-            if(book_size == '5*8'){
-              booktype2=0.533
-            }else if(book_size =='6*9'){
-              booktype2=0.602
-            }else if(book_size =='8*11'){
-              booktype2=0.74
-            }else{}
-          }else if(no_of_pages >= 109 && no_of_pages <=128 ){
-            if(book_size =='5*8'){
-              booktype2=0.533
-            }else if(book_size =='6*9'){
-              booktype2=0.602
-            }else if(book_size =='8*11'){
-              booktype2=0.70
-            }else{}
-          }else if(no_of_pages >= 129 && no_of_pages <=148 ){
-              if(book_size =='5*8'){
-                booktype2=0.460
-              }else if(book_size =='6*9'){
-                booktype2=0.573
-              }else if(book_size =='8*11'){
-                booktype2=0.68
-              }else{}
-          }else if(no_of_pages >= 149 && no_of_pages <=192 ){
-            if(book_size =='5*8'){
-              booktype2=0.460
-            }else if(book_size =='6*9'){
-              booktype2=0.573
-            }else if(book_size =='8*11'){
-              booktype2=0.62
-            }else{}
-          }else if(no_of_pages >= 193 && no_of_pages <=216 ){
-            if(book_size =='5*8'){
-              booktype2=0.424
-            }else if(book_size =='6*9'){
-              booktype2=0.537
-            }else if(book_size =='8*11'){
-              booktype2=0.62
-            }else{}
-          }else if(no_of_pages >= 217 && no_of_pages <=252 ){
-            if(book_size =='5*8'){
-              booktype2=0.424
-            }else if(book_size =='6*9'){
-              booktype2=0.537
-            }else if(book_size =='8*11'){
-              booktype2=0.59
-            }else{}
-          }else if(no_of_pages >= 253 && no_of_pages <=256 ){
-            if(book_size =='5*8'){
-              booktype2=0.424
-            }else if(book_size =='6*9'){
-              booktype2=0.537
-            }else if(book_size =='8*11'){
-              booktype2=0.59
-            }else{}
-          }else if(no_of_pages >= 257 && no_of_pages <=276 ){
-            if(book_size =='5*8'){
-              booktype2=0.413
-            }else if(book_size =='6*9'){
-              booktype2=0.515
-            }else if(book_size =='8*11'){
-              booktype2=0.59
-            }else{}
-          }else if(no_of_pages >= 277 && no_of_pages <=320 ){
-            if(book_size =='5*8'){
-              booktype2=0.413
-            }else if(book_size =='6*9'){
-              booktype2=0.515
-            }else if(book_size =='8*11'){
-              booktype2=0.57
-            }else{}
-          }else if(no_of_pages >= 321 && no_of_pages <=352 ){
-            if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else if(book_size =='8*11'){
-              booktype2=0.57
-            }else{}
-          }else if(no_of_pages >= 353 && no_of_pages <=384 ){
-            if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else if(book_size =='8*11'){
-              booktype2=0.56
-            }else{}
-          }else if(no_of_pages >= 385 && no_of_pages <=432 ){
-            if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else if(book_size =='8*11'){
-              booktype2=0.55
-            }else{}
-          }else if(no_of_pages >= 433 && no_of_pages <=492 ){
-            if(book_size =='8*11'){
-              booktype2=0.54
-            }if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else{
-            }
-          }else if(no_of_pages >= 493 && no_of_pages <=548 ){
-            if(book_size =='8*11'){
-              booktype2=0.54
-            }if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else{
-            }
-          }else if(no_of_pages >=549 ){
-            if(book_size =='8*11'){
-              booktype2=0.54
-            }if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else{
-            }
-          }else{}
-          console.log('test5');
-          debugger;
-          var production_cost=0;
-          if(no_of_pages>0){
-            production_cost = no_of_pages * booktype2 + 8.5;
-          }else{
-            production_cost =0;
-          }
-             var prodsubpercentage = production_cost * 0.15;
-          var subsidPrice = production_cost + prodsubpercentage;
-          subsidPrice = parseFloat(subsidPrice).toFixed(2);
-// alert(subsidPrice+'MultiColor!1');
-// alert("production_cost:"+production_cost);
-var additional_author_copy = $("#additional_author_copies_number").val();
-// var  number_additional_copy = $("#additional_author_copies_number").val();
-// var cost_total1 = subsidPrice*additional_author_copy;
-//               var cost_total2 =  additional_author_copy*30;
-//               var cost_total = cost_total1+cost_total2;
-//      $("#cost_of_additional").val(Math.round(cost_total));
- var package_value_for_cs = package_value_for_c;
- 
-//  alert("package value c: "+package_value_for_c);
-        debugger;
-      var val_of_colorrr = 0;
-        if ($('.color_pages').is(":checked")) {
-          var number_of_color = parseInt($("#color_pages_number").val());
-         var total_color_par = no_of_pages * 0.30;
-         if (number_of_color <= total_color_par ) {
-         val_of_color = number_of_color*7;
-         val_of_color_addi = val_of_color
-         if ($("#additional_author_copies_number").val() != '') {
-          val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-         }else{
-          val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-         }
-         }else{
-          val_of_color = no_of_pages*7;
-          val_of_color_addi = val_of_color
-          val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-          val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-          amount =0;
-         }
-         if ($("#additional_author_copies_number").val() != '') {
-         package_value_for_cs = package_value_for_c+val_of_colorrr;
-         }else{
-          package_value_for_cs = package_value_for_c+val_of_color;
-          
-         }
-        }else{
-             val_of_color = no_of_pages*7;
-               val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-        }
- if ($("#additional_author_copies_number").val() != '') {
-    if ($('.color_pages').is(":checked")) {
-         var val_of_color_of = val_of_color_addi*additional_author_copy
-    }else{
-         var val_of_color_of = additional_author_copy
-        
-    }
- 
-  }else{
-    var val_of_color_of = val_of_color*additional_author_copy
-  }
-    if ($("#color_pages_number").val() != '') {
-          if (number_of_color <= total_color_par ) {
-            var cost_total1 = subsidPrice*additional_author_copy;
-          }else{
-            var cost_total1 = additional_author_copy;
-          }
-        }else{
-          var cost_total1 = subsidPrice*additional_author_copy;
-        }
-        
-        // alert("additional_author_copy:"+additional_author_copy);
-              var cost_total2 =  additional_author_copy*30;
-              // console.log(cost_total1+'cost_total1')
-              // console.log(cost_total2+'cost_total2')
-              // console.log(val_of_color_of+'val_of_color_of')
-              var cost_total = parseInt(cost_total1*1)+parseInt(cost_total2*1)+parseInt(val_of_color_of*1);
-              // if(cost_total==NaN){
-              //   cost_total=0
-              // }
-     $("#cost_of_additional").val(Math.round(cost_total));
-       var cost =  production_cost + (production_cost*40)/100;
-       var amount  = parseInt($("#number_of_complimentary_copies").val())*cost;
-      //  alert("amount:"+amount)
-        // if ($('.color_pages').is(":checked")) {
-        //   var number_of_color = $("#color_pages_number").val();
-        //  var total_color_par = no_of_pages * 0.30;
-        //  if (number_of_color <= total_color_par ) {
-        //  val_of_color = number_of_color*7;
-        //  if (number_additional_copy != '') {
-        //    var total_copy_add= parseInt($("#number_of_complimentary_copies").val())+parseInt(number_additional_copy);
-        //     val_of_color = val_of_color*total_copy_add;
-        //   }else{
-        //     val_of_color = val_of_color*$("#number_of_complimentary_copies").val();
-        //   }
-        //  }else{
-        //   val_of_color = no_of_pages*7;
-        //   if (number_additional_copy != '') {
-        //    var total_copy_add= parseInt($("#number_of_complimentary_copies").val())+parseInt(number_additional_copy);
-        //     val_of_color = val_of_color*total_copy_add;
-        //   }else{
-        //     val_of_color = val_of_color*$("#number_of_complimentary_copies").val();
-        //   }
-        //  }
-        // //  console.log(val_of_color)
-        //  package_value_for_c = package_value_for_c+val_of_color;
-        // }
-        // var package_value  = (package_value_for_c+(package_value_for_c*0.40))+amount;
-          if ($('.color_pages').is(":checked")) {
-          var number_of_color = $("#color_pages_number").val();
-         var total_color_par = no_of_pages * 0.30;
-         if (number_of_color <= total_color_par ) {
-         val_of_color = number_of_color*7;
-         val_of_color_addi = val_of_color
-         if ($("#additional_author_copies_number").val() != '') {
-          val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-         }else{
-          val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-         }
-         }else{
-          val_of_color = no_of_pages*7;
-          val_of_color_addi = val_of_color
-          val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-          val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-          amount =0;
-         }
-         if ($("#additional_author_copies_number").val() != '') {
-         package_value_for_cs = package_value_for_c+val_of_colorrr;
-        //  alert(package_value_for_cs);
-         console.log(package_value_for_c+' package_value_for_c');
-         console.log(val_of_colorrr+' val_of_colorrr');
-         }else{
-          package_value_for_cs = package_value_for_c+val_of_color;
-          console.log(package_value_for_c+' package_value_for_c1');
-          console.log(val_of_color+' val_of_colorrr1');
-         }
-         console.log(package_value_for_cs+' package_value_for_cs');
-        }else{
-            console.log(package_value_for_cs+' package_value_for_cs');
-            
-            val_of_color = no_of_pages*7;
-            val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-        }
-        var package_value  = (package_value_for_cs+(package_value_for_cs*0.40))+amount;
-  // alert(production_cost+' package_cost');
-  // alert(cost+' cost');
-  // alert(amount+' amount');
-  // alert(package_value_for_c+' package_value_for_c');
-  console.log(package_value+' package_value');
-    console.log(amount+' amount');
-     // console.log(package_value+' package_value');
-       $("#package_value").val(Math.round(package_value));
-       $("#less_package_value").val(Math.round(package_value));
-                var total_amount = (package_value * 18) / 100;
-                $("#gst").val(Math.round(total_amount));
-                total_amount_data = total_amount + package_value;
-                $("#total_amount").val(Math.round(total_amount_data));
- var after_total_additional_copy = cost_total+total_amount_data;
-                $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
-                 var total_amount_d = $("#total_amount").val();
-                //  alert("package_value:"+package_value);
-                     total_amount_d = after_total_additional_copy;
-                                            var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
-                                            var discount_40_ = (40 / 100) * total_amount_d;
-                                            var discount_20 = total_amount_d - (discount_40 + discount_40);
-                                            var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
-                                            var discount_20_1 = ((20 / 100) * total_amount_d);
-                                            $("#first_p1").val(discount_40_)
-                            $("#first_p2").val(discount_40_)
-                            $("#first_p3").val(discount_20_1)
-                                          document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
-                                            document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
-      }else if(book_format == 'Hardbound-Jacket'){
-        var booktype3 = 0;
-          if(no_of_pages <= 72){
-            if(book_size =='5*8'){
-                      booktype3=0.605
-            }else if(book_size =='6*9'){
-              booktype3=0.718
-                     }else if(book_size =='8*11'){
-              booktype3=0.85
-                        }else{}
-          }else if(no_of_pages >= 73 && no_of_pages <=96){
-            if(book_size =='5*8'){
-                            booktype3=0.605
-            }else if(book_size =='6*9'){
-              booktype3=0.718
-                          }else if(book_size =='8*11'){
-                booktype3=0.85
-              }else{}
-          }else if(no_of_pages >= 97 && no_of_pages <=108 ){
-            if(book_size =='5*8'){
-              booktype3=0.533
-            }else if(book_size =='6*9'){
-              booktype3=0.602
-                          }else if(book_size =='8*11'){
-              booktype3=0.74
-            }else{}
-          }else if(no_of_pages >= 109 && no_of_pages <=128 ){
-            if(book_size =='5*8'){
-              booktype3=0.533
-            }else if(book_size =='6*9'){
-              booktype3=0.602
-            }else if(book_size =='8*11'){
-              booktype3=0.70
-            }else{}
-          }else if(no_of_pages >= 129 && no_of_pages <=148 ){
-              if(book_size =='5*8'){
-                booktype3=0.460
-              }else if(book_size =='6*9'){
-                booktype3=0.573
-              }else if(book_size =='8*11'){
-                booktype3=0.68
-              }else{}
-          }else if(no_of_pages >= 149 && no_of_pages <=192 ){
-            if(book_size =='5*8'){
-              booktype3=0.460
-            }else if(book_size =='6*9'){
-              booktype3=0.573
-            }else if(book_size =='8*11'){
-              booktype3=0.62
-            }else{}
-          }else if(no_of_pages >= 193 && no_of_pages <=216 ){
-            if(book_size =='5*8'){
-              booktype3=0.424
-            }else if(book_size =='6*9'){
-              booktype3=0.537
-            }else if(book_size =='8*11'){
-              booktype3=0.62
-            }else{}
-          }else if(no_of_pages >= 217 && no_of_pages <=252 ){
-            if(book_size =='5*8'){
-              booktype3=0.424
-            }else if(book_size =='6*9'){
-              booktype3=0.537
-            }else if(book_size =='8*11'){
-              booktype3=0.59
-              1
-            }else{}
-          }else if(no_of_pages >= 253 && no_of_pages <=256 ){
-            if(book_size =='5*8'){
-              booktype3=0.424
-            }else if(book_size =='6*9'){
-              booktype3=0.537
-            }else if(book_size =='8*11'){
-              booktype3=0.59
-            }else{}
-          }else if(no_of_pages >= 257 && no_of_pages <=276 ){
-            if(book_size =='5*8'){
-              booktype3=0.413
-            }else if(book_size =='6*9'){
-              booktype3=0.515
-            }else if(book_size =='8*11'){
-              booktype3=0.59
-            }else{}
-          }else if(no_of_pages >= 277 && no_of_pages <=320 ){
-            if(book_size =='5*8'){
-              booktype3=0.413
-            }else if(book_size =='6*9'){
-              booktype3=0.515
-            }else if(book_size =='8*11'){
-              booktype3=0.57
-            }else{}
-          }else if(no_of_pages >= 321 && no_of_pages <=352 ){
-            if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else if(book_size =='8*11'){
-              booktype3=0.57
-            }else{}
-          }else if(no_of_pages >= 353 && no_of_pages <=384 ){
-            if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else if(book_size =='8*11'){
-              booktype3=0.56
-            }else{}
-          }else if(no_of_pages >= 385 && no_of_pages <=432 ){
-            if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else if(book_size =='8*11'){
-              booktype3=0.55
-            }else{}
-          }else if(no_of_pages >= 433 && no_of_pages <=492 ){
-            if(book_size =='8*11'){
-              booktype3=0.54
-            }if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else{
-            }
-          }else if(no_of_pages >= 493 && no_of_pages <=548 ){
-            if(book_size =='8*11'){
-              booktype3=0.54
-            }if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else{
-            }
-          }else if(no_of_pages >=549 ){
-            if(book_size =='8*11'){
-              booktype3=0.54
-            }if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else{
-            }
-          }else{}
-          console.log('test6')
-          // console.log(no_of_pages+'no_of_pages')
-          // console.log(booktype3+'booktype3')
-          var production_cost = no_of_pages * booktype3 + 55;
-          // console.log(production_cost+'production_cost')
-       var cost =  production_cost + (production_cost*40)/100;
-       // console.log(cost+'cost')
-        var amount  = parseInt($("#number_of_complimentary_copies").val())*cost;
-        // console.log(amount+'amount')
-     var  number_additional_copy = $("#additional_author_copies_number").val();
-     // console.log(number_additional_copy+'number_additional_copy')
-        // if ($('.color_pages').is(":checked")) {
-        //   var number_of_color = $("#color_pages_number").val();
-        //  var total_color_par = no_of_pages * 0.30;
-        //  if (number_of_color <= total_color_par ) {
-        //  val_of_color = number_of_color*7;
-        //   if (number_additional_copy != '') {
-        //    var total_copy_add= parseInt($("#number_of_complimentary_copies").val())+parseInt(number_additional_copy);
-        //     val_of_color = val_of_color*total_copy_add;
-        //   }else{
-        //     val_of_color = val_of_color*$("#number_of_complimentary_copies").val();
-        //   }
-         
-        //  }else{
-        //   val_of_color = no_of_pages*7;
-        //   if (number_additional_copy != '') {
-        //    var total_copy_add= parseInt($("#number_of_complimentary_copies").val())+parseInt(number_additional_copy);
-        //     val_of_color = val_of_color*total_copy_add;
-        //   }else{
-        //     val_of_color = val_of_color*$("#number_of_complimentary_copies").val();
-        //   }
-        //  }
-        //  package_value_for_c = package_value_for_c+val_of_color;
-        //  console.log(val_of_color)
-        //  console.log(package_value_for_c+"package_value_for_c")
-        // }
-        //  alert("package value c: "+package_value_for_c);
-        debugger;
-        var package_value_for_c_bound = ''; // added to handle package value change while editing switching bw multi & hardbound 
-        if ($('.color_pages').is(":checked")) {
-            var number_of_color = $("#color_pages_number").val();
-            var total_color_par = no_of_pages * 0.30;
-            if (number_of_color <= total_color_par ) {
-            val_of_color = number_of_color*7;
-            val_of_color_addi = val_of_color
-            if ($("#additional_author_copies_number").val() != '') {
-            val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-            }else{
-            val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-            }
-            }else{
-            val_of_color = no_of_pages*7;
-            val_of_color_addi = val_of_color
-            val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-            val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-            amount =parseInt($("#number_of_complimentary_copies").val())*55;
-            amount =amount+(amount*0.40);
-            }
-            if ($("#additional_author_copies_number").val() != '') {
-            package_value_for_c = package_value_for_c+val_of_colorrr;
-            }else{
-            package_value_for_c = package_value_for_c+val_of_color;
-            }
-            }else{
-               val_of_color = no_of_pages*7;
-               val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-                
-            }
-        var package_value  = (package_value_for_c+(package_value_for_c*0.40))+amount;
-        // console.log(package_value+"package_value")
-          var prodsubpercentage = production_cost * 0.15;
-          var subsidPrice = production_cost + prodsubpercentage;
-          subsidPrice = parseFloat(subsidPrice).toFixed(2);
-// // alert(subsidPrice+'Hardbound');
-//     var additional_author_copy = $("#additional_author_copies_number").val();
-//     var cost_total1 = subsidPrice*additional_author_copy;
-//               var cost_total2 =  additional_author_copy*40;
-//               var cost_total = cost_total1+cost_total2;
-//      $("#cost_of_additional").val(Math.round(cost_total));
-var additional_author_copy = $("#additional_author_copies_number").val();
-if ($("#additional_author_copies_number").val() != '') {
-    if ($('.color_pages').is(":checked")) {
-         var val_of_color_of = val_of_color_addi*additional_author_copy
-    }else{
-         var val_of_color_of = additional_author_copy
-    }
-}else{
-var val_of_color_of = val_of_color*additional_author_copy
-}
-val_of_color_of = val_of_color_of+(val_of_color_of*0.15);
-if ($("#color_pages_number").val() != '') {
-if (number_of_color <= total_color_par ) {
-var cost_total1 = subsidPrice*additional_author_copy;
-// console.log(subsidPrice+'subsidPrice')
-// console.log(additional_author_copy+'additional_author_copy')
-}else{
-var cost_total1 = additional_author_copy*55;
-}
-}else{
-var cost_total1 = subsidPrice*additional_author_copy;
-}
- var cost_total2 =  additional_author_copy*40;
- // console.log(cost_total1+'cost_total1')
- // console.log(cost_total2+'cost_total2')
- // console.log(val_of_color_of+'val_of_color_of')
- var cost_total = parseInt(cost_total1)+parseInt(cost_total2)+parseInt(val_of_color_of);
-$("#cost_of_additional").val(Math.round(cost_total));
-       $("#package_value").val(Math.round(package_value));
-       $("#less_package_value").val(Math.round(package_value));
-                var total_amount = (package_value * 18) / 100;
-                $("#gst").val(Math.round(total_amount));
-                total_amount_data = total_amount + package_value;
-                    var after_total_additional_copy = cost_total+total_amount_data;
-                $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
-                $("#total_amount").val(Math.round(total_amount_data));
-                 var total_amount_d = $("#total_amount").val();
-                 total_amount_d = after_total_additional_copy;
-                                            var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
-                                            var discount_40_ = (40 / 100) * total_amount_d;
-                                            var discount_20 = total_amount_d - (discount_40 + discount_40);
-                                            var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
-                                            var discount_20_1 = ((20 / 100) * total_amount_d);
-                                            $("#first_p1").val(discount_40_)
-                            $("#first_p2").val(discount_40_)
-                            $("#first_p3").val(discount_20_1)
-                                            document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
-                                            document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
-      }
+            if (book_format == 'MultiColor' || book_format == 'MultiColor 250 GSM') {
+                // alert('test');
+                if (no_of_pages <= 72) {
+                    if (book_size == '5*8') {
+                        booktype = 0.605
+                    } else if (book_size == '6*9') {
+                        booktype = 0.718
+                    } else if (book_size == '8*11') {
+                        booktype = 0.85
+                    } else {}
+                } else if (no_of_pages >= 73 && no_of_pages <= 96) {
+                    if (book_size == '5*8') {
+                        booktype = 0.605
+                    } else if (book_size == '6*9') {
+                        booktype = 0.718
+                    } else if (book_size == '8*11') {
+                        booktype = 0.85
+                    } else {}
+                } else if (no_of_pages >= 97 && no_of_pages <= 108) {
+                    if (book_size == '5*8') {
+                        booktype = 0.533
+                    } else if (book_size == '6*9') {
+                        booktype = 0.602
+                    } else if (book_size == '8*11') {
+                        booktype = 0.74
+                    } else {}
+                } else if (no_of_pages >= 109 && no_of_pages <= 128) {
+                    if (book_size == '5*8') {
+                        booktype = 0.533
+                    } else if (book_size == '6*9') {
+                        booktype = 0.602
+                    } else if (book_size == '8*11') {
+                        booktype = 0.70
+                    } else {}
+                } else if (no_of_pages >= 129 && no_of_pages <= 148) {
+                    if (book_size == '5*8') {
+                        booktype = 0.460
+                    } else if (book_size == '6*9') {
+                        booktype = 0.573
+                    } else if (book_size == '8*11') {
+                        booktype = 0.68
+                    } else {}
+                } else if (no_of_pages >= 149 && no_of_pages <= 192) {
+                    if (book_size == '5*8') {
+                        booktype = 0.460
+                    } else if (book_size == '6*9') {
+                        booktype = 0.573
+                    } else if (book_size == '8*11') {
+                        booktype = 0.62
+                    } else {}
+                } else if (no_of_pages >= 193 && no_of_pages <= 216) {
+                    if (book_size == '5*8') {
+                        booktype = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype = 0.62
+                    } else {}
+                } else if (no_of_pages >= 217 && no_of_pages <= 252) {
+                    if (book_size == '5*8') {
+                        booktype = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype = 0.59
+                    } else {}
+                } else if (no_of_pages >= 253 && no_of_pages <= 256) {
+                    if (book_size == '5*8') {
+                        booktype = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype = 0.59
+                    } else {}
+                } else if (no_of_pages >= 257 && no_of_pages <= 276) {
+                    if (book_size == '5*8') {
+                        booktype = 0.413
+                    } else if (book_size == '6*9') {
+                        booktype = 0.515
+                    } else if (book_size == '8*11') {
+                        booktype = 0.59
+                    } else {}
+                } else if (no_of_pages >= 277 && no_of_pages <= 320) {
+                    if (book_size == '5*8') {
+                        booktype = 0.413
+                    } else if (book_size == '6*9') {
+                        booktype = 0.515
+                    } else if (book_size == '8*11') {
+                        booktype = 0.57
+                    } else {}
+                } else if (no_of_pages >= 321 && no_of_pages <= 352) {
+                    if (book_size == '5*8') {
+                        booktype = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype = 0.57
+                    } else {}
+                } else if (no_of_pages >= 353 && no_of_pages <= 384) {
+                    if (book_size == '5*8') {
+                        booktype = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype = 0.56
+                    } else {}
+                } else if (no_of_pages >= 385 && no_of_pages <= 432) {
+                    if (book_size == '5*8') {
+                        booktype = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype = 0.55
+                    } else {}
+                } else if (no_of_pages >= 433 && no_of_pages <= 492) {
+                    if (book_size == '8*11') {
+                        booktype = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype = 0.500
+                    } else {}
+                } else if (no_of_pages >= 493 && no_of_pages <= 548) {
+                    if (book_size == '8*11') {
+                        booktype = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype = 0.500
+                    } else {}
+                } else if (no_of_pages >= 549) {
+                    if (book_size == '8*11') {
+                        booktype = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype = 0.500
+                    } else {}
+                } else {}
+                console.log('test3')
+                var production_cost = no_of_pages * booktype + 8.5;
+                var prodsubpercentage = production_cost * 0.15;
+                var subsidPrice = production_cost + prodsubpercentage;
+                subsidPrice = parseFloat(subsidPrice).toFixed(2);
+                var cost = production_cost + (production_cost * 40) / 100;
+                var amount = parseInt($("#number_of_complimentary_copies").val()) * cost;
+                var number_additional_copy = $("#additional_author_copies_number").val();
+                var package_value_for_cs = package_value_for_c
+                var val_of_colorrr = 0;
+                if ($('.color_pages').is(":checked")) {
+                    var number_of_color = $("#color_pages_number").val();
+                    var total_color_par = no_of_pages * 0.30;
+                    if (number_of_color <= total_color_par) {
+                        val_of_color = number_of_color * 7;
+                        val_of_color_addi = val_of_color
+                        if ($("#additional_author_copies_number").val() != '') {
+                            val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        } else {
+                            val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        }
+                    } else {
+                        val_of_color = no_of_pages * 7;
+                        val_of_color_addi = val_of_color
+                        val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        amount = 0;
+                    }
+                    if ($("#additional_author_copies_number").val() != '') {
+                        package_value_for_cs = package_value_for_c + val_of_colorrr;
+                    } else {
+                        package_value_for_cs = package_value_for_c + val_of_color;
+                    }
+                } else {
+                    val_of_color = no_of_pages * 7;
+                    // alert(no_of_pages)
+                    val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                    // alert(val_of_color)
                 }
-              }else{
-                //here start the create code for multicolor_code
-                 var book_format = $(this).val();
-            var no_of_pages = parseInt($("#number_of_pages_for_sc").val());
-            var book_size = $('#book_size_sc :selected').text();
-           let booktype2=0;
-          // alert(package_value_for_c);
-      if(book_format=='MultiColor' || book_format=='MultiColor 250 GSM'){
-          if(no_of_pages <= 72){
-            if(book_size =='5*8'){
-              booktype2=0.605
-            }else if(book_size =='6*9'){
-              booktype2=0.718
-            }else if(book_size =='8*11'){
-              booktype2=0.85
-            }else{}
-          }else if(no_of_pages >= 73 && no_of_pages <=96){
-            if(book_size =='5*8'){
-              booktype2=0.605
-            }else if(book_size =='6*9'){
-              booktype2=0.718
-            }else if(book_size =='8*11'){
-                booktype2=0.85
-              }else{}
-          }else if(no_of_pages >= 97 && no_of_pages <=108 ){
-            if(book_size == '5*8'){
-              booktype2=0.533
-            }else if(book_size =='6*9'){
-              booktype2=0.602
-            }else if(book_size =='8*11'){
-              booktype2=0.74
-            }else{}
-          }else if(no_of_pages >= 109 && no_of_pages <=128 ){
-            if(book_size =='5*8'){
-              booktype2=0.533
-            }else if(book_size =='6*9'){
-              booktype2=0.602
-            }else if(book_size =='8*11'){
-              booktype2=0.70
-            }else{}
-          }else if(no_of_pages >= 129 && no_of_pages <=148 ){
-              if(book_size =='5*8'){
-                booktype2=0.460
-              }else if(book_size =='6*9'){
-                booktype2=0.573
-              }else if(book_size =='8*11'){
-                booktype2=0.68
-              }else{}
-          }else if(no_of_pages >= 149 && no_of_pages <=192 ){
-            if(book_size =='5*8'){
-              booktype2=0.460
-            }else if(book_size =='6*9'){
-              booktype2=0.573
-            }else if(book_size =='8*11'){
-              booktype2=0.62
-            }else{}
-          }else if(no_of_pages >= 193 && no_of_pages <=216 ){
-            if(book_size =='5*8'){
-              booktype2=0.424
-            }else if(book_size =='6*9'){
-              booktype2=0.537
-            }else if(book_size =='8*11'){
-              booktype2=0.62
-            }else{}
-          }else if(no_of_pages >= 217 && no_of_pages <=252 ){
-            if(book_size =='5*8'){
-              booktype2=0.424
-            }else if(book_size =='6*9'){
-              booktype2=0.537
-            }else if(book_size =='8*11'){
-              booktype2=0.59
-            }else{}
-          }else if(no_of_pages >= 253 && no_of_pages <=256 ){
-            if(book_size =='5*8'){
-              booktype2=0.424
-            }else if(book_size =='6*9'){
-              booktype2=0.537
-            }else if(book_size =='8*11'){
-              booktype2=0.59
-            }else{}
-          }else if(no_of_pages >= 257 && no_of_pages <=276 ){
-            if(book_size =='5*8'){
-              booktype2=0.413
-            }else if(book_size =='6*9'){
-              booktype2=0.515
-            }else if(book_size =='8*11'){
-              booktype2=0.59
-            }else{}
-          }else if(no_of_pages >= 277 && no_of_pages <=320 ){
-            if(book_size =='5*8'){
-              booktype2=0.413
-            }else if(book_size =='6*9'){
-              booktype2=0.515
-            }else if(book_size =='8*11'){
-              booktype2=0.57
-            }else{}
-          }else if(no_of_pages >= 321 && no_of_pages <=352 ){
-            if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else if(book_size =='8*11'){
-              booktype2=0.57
-            }else{}
-          }else if(no_of_pages >= 353 && no_of_pages <=384 ){
-            if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else if(book_size =='8*11'){
-              booktype2=0.56
-            }else{}
-          }else if(no_of_pages >= 385 && no_of_pages <=432 ){
-            if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else if(book_size =='8*11'){
-              booktype2=0.55
-            }else{}
-          }else if(no_of_pages >= 433 && no_of_pages <=492 ){
-            if(book_size =='8*11'){
-              booktype2=0.54
-            }if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else{
-            }
-          }else if(no_of_pages >= 493 && no_of_pages <=548 ){
-            if(book_size =='8*11'){
-              booktype2=0.54
-            }if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else{
-            }
-          }else if(no_of_pages >=549 ){
-            if(book_size =='8*11'){
-              booktype2=0.54
-            }if(book_size =='5*8'){
-              booktype2=0.405
-            }else if(book_size =='6*9'){
-              booktype2=0.500
-            }else{
-            }
-          }else{}
-          console.log('test8')
-          var production_cost = no_of_pages * booktype2 + 8.5;
-             var prodsubpercentage = production_cost * 0.15;
-          var subsidPrice = production_cost + prodsubpercentage;
-          subsidPrice = parseFloat(subsidPrice).toFixed(2);
-          console.log(production_cost+' production_cost')
 
-       var cost =  production_cost + (production_cost*40)/100;
-        var amount  = parseInt($("#number_of_complimentary_copies").val())*cost;
-        var  number_additional_copy = $("#additional_author_copies_number").val();
-       var package_value_for_cs = package_value_for_c
-       var val_of_colorrr = 0;
-        if ($('.color_pages').is(":checked")) {
-          var number_of_color = $("#color_pages_number").val();
-         var total_color_par = no_of_pages * 0.30;
-         if (number_of_color <= total_color_par ) {
-         val_of_color = number_of_color*7;
-         val_of_color_addi = val_of_color
-         if ($("#additional_author_copies_number").val() != '') {
-          val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-         }else{
-          val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-         }
-         }else{
-          val_of_color = no_of_pages*7;
-          val_of_color_addi = val_of_color
-          val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-          val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-          amount =0;
-         }
-         if ($("#additional_author_copies_number").val() != '') {
-         package_value_for_cs = package_value_for_c+val_of_colorrr;
-         }else{
-          package_value_for_cs = package_value_for_c+val_of_color;
-         }
-        }else{
-             val_of_color = no_of_pages*7;
-               val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-        }
-       
-        var package_value  = (package_value_for_cs+(package_value_for_cs*0.40))+amount;
-  var additional_author_copy = $("#additional_author_copies_number").val();
-  if ($("#additional_author_copies_number").val() != '') {
-    if ($('.color_pages').is(":checked")) {
-         var val_of_color_of = val_of_color_addi*additional_author_copy
-    }else{
-         var val_of_color_of = additional_author_copy
-        
-    }
- 
-  }else{
-    var val_of_color_of = val_of_color*additional_author_copy
-  }
-        //val_of_color_of = val_of_color_of+(val_of_color_of*0.15);
-        if ($("#color_pages_number").val() != '') {
-          if (number_of_color <= total_color_par ) {
-            var cost_total1 = subsidPrice*additional_author_copy;
-          }else{
-            var cost_total1 = additional_author_copy;
-          }
-        }else{
-          var cost_total1 = subsidPrice*additional_author_copy;
-        }
-              var cost_total2 =  additional_author_copy*30;
-              var cost_total = parseInt(cost_total1)+parseInt(cost_total2)+parseInt(val_of_color_of);
-     $("#cost_of_additional").val(Math.round(cost_total));
-       $("#package_value").val(Math.round(package_value));
-       $("#less_package_value").val(Math.round(package_value));
+                var package_value = (package_value_for_cs + (package_value_for_cs * 0.40)) + amount;
+                var additional_author_copy = $("#additional_author_copies_number").val();
+                if ($("#additional_author_copies_number").val() != '') {
+                    if ($('.color_pages').is(":checked")) {
+                        var val_of_color_of = val_of_color_addi * additional_author_copy
+                    } else {
+                        var val_of_color_of = additional_author_copy
+
+                    }
+                    // var val_of_color_of = val_of_color_addi*additional_author_copy
+                } else {
+                    var val_of_color_of = val_of_color * additional_author_copy
+                }
+                val_of_color_of = val_of_color_of + (val_of_color_of * 0.15);
+                if ($("#color_pages_number").val() != '') {
+                    if (number_of_color <= total_color_par) {
+                        var cost_total1 = subsidPrice * additional_author_copy;
+                    } else {
+                        var cost_total1 = additional_author_copy;
+                    }
+                } else {
+                    var cost_total1 = subsidPrice * additional_author_copy;
+                }
+                var cost_total2 = additional_author_copy * 30;
+                var cost_total = parseInt(cost_total1) + parseInt(cost_total2) + parseInt(val_of_color_of);
+                $("#cost_of_additional").val(Math.round(cost_total));
+                $("#package_value").val(Math.round(package_value));
+                $("#less_package_value").val(Math.round(package_value));
                 var total_amount = (package_value * 18) / 100;
                 $("#gst").val(Math.round(total_amount));
                 total_amount_data = total_amount + package_value;
                 $("#total_amount").val(Math.round(total_amount_data));
-                var after_total_additional_copy = cost_total+total_amount_data;
+                var after_total_additional_copy = cost_total + total_amount_data;
                 $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
-                 var total_amount_d = $("#total_amount").val();
-                 if ($("#additional_author_copies_number").val() != '') {        
-                 total_amount_d = after_total_additional_copy;
-                 }else{
-                  total_amount_d = total_amount_data;
-                 }
-                                            var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
-                                            var discount_40_ = (40 / 100) * total_amount_d;
-                                            var discount_20 = total_amount_d - (discount_40 + discount_40);
-                                            var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
-                                            var discount_20_1 = ((20 / 100) * total_amount_d);
-                                            $("#first_p1").val(discount_40_)
-                            $("#first_p2").val(discount_40_)
-                            $("#first_p3").val(discount_20_1)
-                                          document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                                            document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
-                                            document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                                            document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
-      }else if(book_format == 'Hardbound-Jacket'){
-//this is for create package time and for hardbound
-        var booktype3 = 0;
-          if(no_of_pages <= 72){
-            if(book_size =='5*8'){
-                      booktype3=0.605
-            }else if(book_size =='6*9'){
-              booktype3=0.718
-                     }else if(book_size =='8*11'){
-              booktype3=0.85
-                        }else{}
-          }else if(no_of_pages >= 73 && no_of_pages <=96){
-            if(book_size =='5*8'){
-                            booktype3=0.605
-            }else if(book_size =='6*9'){
-              booktype3=0.718
-                          }else if(book_size =='8*11'){
-                booktype3=0.85
-              }else{}
-          }else if(no_of_pages >= 97 && no_of_pages <=108 ){
-            if(book_size =='5*8'){
-              booktype3=0.533
-            }else if(book_size =='6*9'){
-              booktype3=0.602
-                          }else if(book_size =='8*11'){
-              booktype3=0.74
-            }else{}
-          }else if(no_of_pages >= 109 && no_of_pages <=128 ){
-            if(book_size =='5*8'){
-              booktype3=0.533
-            }else if(book_size =='6*9'){
-              booktype3=0.602
-            }else if(book_size =='8*11'){
-              booktype3=0.70
-            }else{}
-          }else if(no_of_pages >= 129 && no_of_pages <=148 ){
-              if(book_size =='5*8'){
-                booktype3=0.460
-              }else if(book_size =='6*9'){
-                booktype3=0.573
-              }else if(book_size =='8*11'){
-                booktype3=0.68
-              }else{}
-          }else if(no_of_pages >= 149 && no_of_pages <=192 ){
-            if(book_size =='5*8'){
-              booktype3=0.460
-            }else if(book_size =='6*9'){
-              booktype3=0.573
-            }else if(book_size =='8*11'){
-              booktype3=0.62
-            }else{}
-          }else if(no_of_pages >= 193 && no_of_pages <=216 ){
-            if(book_size =='5*8'){
-              booktype3=0.424
-            }else if(book_size =='6*9'){
-              booktype3=0.537
-            }else if(book_size =='8*11'){
-              booktype3=0.62
-            }else{}
-          }else if(no_of_pages >= 217 && no_of_pages <=252 ){
-            if(book_size =='5*8'){
-              booktype3=0.424
-            }else if(book_size =='6*9'){
-              booktype3=0.537
-            }else if(book_size =='8*11'){
-              booktype3=0.59
-              1
-            }else{}
-          }else if(no_of_pages >= 253 && no_of_pages <=256 ){
-            if(book_size =='5*8'){
-              booktype3=0.424
-            }else if(book_size =='6*9'){
-              booktype3=0.537
-            }else if(book_size =='8*11'){
-              booktype3=0.59
-            }else{}
-          }else if(no_of_pages >= 257 && no_of_pages <=276 ){
-            if(book_size =='5*8'){
-              booktype3=0.413
-            }else if(book_size =='6*9'){
-              booktype3=0.515
-            }else if(book_size =='8*11'){
-              booktype3=0.59
-            }else{}
-          }else if(no_of_pages >= 277 && no_of_pages <=320 ){
-            if(book_size =='5*8'){
-              booktype3=0.413
-            }else if(book_size =='6*9'){
-              booktype3=0.515
-            }else if(book_size =='8*11'){
-              booktype3=0.57
-            }else{}
-          }else if(no_of_pages >= 321 && no_of_pages <=352 ){
-            if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else if(book_size =='8*11'){
-              booktype3=0.57
-            }else{}
-          }else if(no_of_pages >= 353 && no_of_pages <=384 ){
-            if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else if(book_size =='8*11'){
-              booktype3=0.56
-            }else{}
-          }else if(no_of_pages >= 385 && no_of_pages <=432 ){
-            if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else if(book_size =='8*11'){
-              booktype3=0.55
-            }else{}
-          }else if(no_of_pages >= 433 && no_of_pages <=492 ){
-            if(book_size =='8*11'){
-              booktype3=0.54
-            }if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else{
+                var total_amount_d = $("#total_amount").val();
+                total_amount_d = after_total_additional_copy;
+                var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
+                var discount_40_ = (40 / 100) * total_amount_d;
+                var discount_20 = total_amount_d - (discount_40 + discount_40);
+                var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
+                var discount_20_1 = ((20 / 100) * total_amount_d);
+                $("#first_p1").val(discount_40_)
+                $("#first_p2").val(discount_40_)
+                $("#first_p3").val(discount_20_1)
+                document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+                document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+                document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
+                document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
+                document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
+                document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
+            } else if (book_format == 'Hardbound-Jacket') {
+                // alert('test hadbound')
+                var booktype1 = 0;
+                if (no_of_pages <= 72) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.605
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.718
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.85
+                    } else {}
+                } else if (no_of_pages >= 73 && no_of_pages <= 96) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.605
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.718
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.85
+                    } else {}
+                } else if (no_of_pages >= 97 && no_of_pages <= 108) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.533
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.602
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.74
+                    } else {}
+                } else if (no_of_pages >= 109 && no_of_pages <= 128) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.533
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.602
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.70
+                    } else {}
+                } else if (no_of_pages >= 129 && no_of_pages <= 148) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.460
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.573
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.68
+                    } else {}
+                } else if (no_of_pages >= 149 && no_of_pages <= 192) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.460
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.573
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.62
+                    } else {}
+                } else if (no_of_pages >= 193 && no_of_pages <= 216) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.62
+                    } else {}
+                } else if (no_of_pages >= 217 && no_of_pages <= 252) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.59
+                        1
+                    } else {}
+                } else if (no_of_pages >= 253 && no_of_pages <= 256) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.59
+                    } else {}
+                } else if (no_of_pages >= 257 && no_of_pages <= 276) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.413
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.515
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.59
+                    } else {}
+                } else if (no_of_pages >= 277 && no_of_pages <= 320) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.413
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.515
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.57
+                    } else {}
+                } else if (no_of_pages >= 321 && no_of_pages <= 352) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.57
+                    } else {}
+                } else if (no_of_pages >= 353 && no_of_pages <= 384) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.56
+                    } else {}
+                } else if (no_of_pages >= 385 && no_of_pages <= 432) {
+                    if (book_size == '5*8') {
+                        booktype1 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype1 = 0.55
+                    } else {}
+                } else if (no_of_pages >= 433 && no_of_pages <= 492) {
+                    if (book_size == '8*11') {
+                        booktype1 = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype1 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.500
+                    } else {}
+                } else if (no_of_pages >= 493 && no_of_pages <= 548) {
+                    if (book_size == '8*11') {
+                        booktype1 = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype1 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.500
+                    } else {}
+                } else if (no_of_pages >= 549) {
+                    if (book_size == '8*11') {
+                        booktype1 = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype1 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype1 = 0.500
+                    } else {}
+                } else {}
+                console.log('test4')
+                var production_cost = no_of_pages * booktype1 + 55;
+                var prodsubpercentage = production_cost * 0.15;
+                var subsidPrice = production_cost + prodsubpercentage;
+                subsidPrice = parseFloat(subsidPrice).toFixed(2);
+                // alert(subsidPrice+'Hardbound!1');
+                var additional_author_copy = $("#additional_author_copies_number").val();
+                var cost_total1 = subsidPrice * additional_author_copy;
+                var cost_total2 = additional_author_copy * 40;
+                var cost_total = cost_total1 + cost_total2;
+                $("#cost_of_additional").val(Math.round(cost_total));
+                var cost = production_cost + (production_cost * 40) / 100;
+                var amount = parseInt($("#number_of_complimentary_copies").val()) * cost;
+                var package_value = (package_value_for_edit + (package_value_for_edit * 0.40)) + amount;
+                //         alert(production_cost);
+                // alert(cost);
+                // alert(amount);
+                // alert(package_value);
+                $("#package_value").val(Math.round(package_value));
+                $("#less_package_value").val(Math.round(package_value));
+                var total_amount = (package_value * 18) / 100;
+                $("#gst").val(Math.round(total_amount));
+                total_amount_data = total_amount + package_value;
+                $("#total_amount").val(Math.round(total_amount_data));
+                var after_total_additional_copy = cost_total + total_amount_data;
+                $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
+                var total_amount_d = $("#total_amount").val();
+                total_amount_d = after_total_additional_copy;
+                var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
+                var discount_40_ = (40 / 100) * total_amount_d;
+                var discount_20 = total_amount_d - (discount_40 + discount_40);
+                var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
+                var discount_20_1 = ((20 / 100) * total_amount_d);
+                $("#first_p1").val(discount_40_)
+                $("#first_p2").val(discount_40_)
+                $("#first_p3").val(discount_20_1)
+                document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+                document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+                document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
+                document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
+                document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
+                document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
             }
-          }else if(no_of_pages >= 493 && no_of_pages <=548 ){
-            if(book_size =='8*11'){
-              booktype3=0.54
-            }if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else{
-            }
-          }else if(no_of_pages >=549 ){
-            if(book_size =='8*11'){
-              booktype3=0.54
-            }if(book_size =='5*8'){
-              booktype3=0.405
-            }else if(book_size =='6*9'){
-              booktype3=0.500
-            }else{
-            }
-          }else{}
-          console.log('test10')
-          var production_cost = no_of_pages * booktype3 + 55;
-          console.log(production_cost+'production_cost')
-             var prodsubpercentage = production_cost * 0.15;
-          var subsidPrice = production_cost + prodsubpercentage;
-          subsidPrice = parseFloat(subsidPrice).toFixed(2);
-       var cost =  production_cost + (production_cost*40)/100;
-       console.log(cost+'cost')
-        var amount  = parseInt($("#number_of_complimentary_copies").val())*cost;
-         console.log(amount+'amount')
-        var  number_additional_copy = $("#additional_author_copies_number").val();
-var package_value_for_cs = package_value_for_c
-var val_of_colorrr = 0;
-if ($('.color_pages').is(":checked")) {
-var number_of_color = $("#color_pages_number").val();
-var total_color_par = no_of_pages * 0.30;
-if (number_of_color <= total_color_par ) {
-val_of_color = number_of_color*7;
-val_of_color_addi = val_of_color
-if ($("#additional_author_copies_number").val() != '') {
-val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-}else{
-val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-}
-}else{
-val_of_color = no_of_pages*7;
-val_of_color_addi = val_of_color
-val_of_colorrr =  val_of_color*parseInt($("#number_of_complimentary_copies").val())
-val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-amount =parseInt($("#number_of_complimentary_copies").val())*55;
-amount =amount+(amount*0.40);
-}
-if ($("#additional_author_copies_number").val() != '') {
-package_value_for_cs = package_value_for_c+val_of_colorrr;
-}else{
-package_value_for_cs = package_value_for_c+val_of_color;
-}
-}else{
-   val_of_color = no_of_pages*7;
-   val_of_color = val_of_color*parseInt($("#number_of_complimentary_copies").val())
-    
-}
+        } else {
+            // alert('hello');
+            // console.log("hello")
 
-var package_value  = (package_value_for_cs+(package_value_for_cs*0.40))+amount;
-console.log(package_value+'package_value')
-var additional_author_copy = $("#additional_author_copies_number").val();
-if ($("#additional_author_copies_number").val() != '') {
-    if ($('.color_pages').is(":checked")) {
-         var val_of_color_of = val_of_color_addi*additional_author_copy
-    }else{
-         var val_of_color_of = additional_author_copy
+            // if package is change but it is edit part
+            var book_format = $(this).val();
+            var no_of_pages = parseInt($("#number_of_pages_for_sc").val());
+            var book_size = $('#book_size_sc :selected').text();
+            let booktype2 = 0;
+            if (book_format == 'MultiColor' || book_format == 'MultiColor 250 GSM') {
+                if (no_of_pages <= 72) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.605
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.718
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.85
+                    } else {}
+                } else if (no_of_pages >= 73 && no_of_pages <= 96) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.605
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.718
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.85
+                    } else {}
+                } else if (no_of_pages >= 97 && no_of_pages <= 108) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.533
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.602
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.74
+                    } else {}
+                } else if (no_of_pages >= 109 && no_of_pages <= 128) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.533
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.602
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.70
+                    } else {}
+                } else if (no_of_pages >= 129 && no_of_pages <= 148) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.460
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.573
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.68
+                    } else {}
+                } else if (no_of_pages >= 149 && no_of_pages <= 192) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.460
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.573
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.62
+                    } else {}
+                } else if (no_of_pages >= 193 && no_of_pages <= 216) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.62
+                    } else {}
+                } else if (no_of_pages >= 217 && no_of_pages <= 252) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.59
+                    } else {}
+                } else if (no_of_pages >= 253 && no_of_pages <= 256) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.59
+                    } else {}
+                } else if (no_of_pages >= 257 && no_of_pages <= 276) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.413
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.515
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.59
+                    } else {}
+                } else if (no_of_pages >= 277 && no_of_pages <= 320) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.413
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.515
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.57
+                    } else {}
+                } else if (no_of_pages >= 321 && no_of_pages <= 352) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.57
+                    } else {}
+                } else if (no_of_pages >= 353 && no_of_pages <= 384) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.56
+                    } else {}
+                } else if (no_of_pages >= 385 && no_of_pages <= 432) {
+                    if (book_size == '5*8') {
+                        booktype2 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype2 = 0.55
+                    } else {}
+                } else if (no_of_pages >= 433 && no_of_pages <= 492) {
+                    if (book_size == '8*11') {
+                        booktype2 = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype2 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.500
+                    } else {}
+                } else if (no_of_pages >= 493 && no_of_pages <= 548) {
+                    if (book_size == '8*11') {
+                        booktype2 = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype2 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.500
+                    } else {}
+                } else if (no_of_pages >= 549) {
+                    if (book_size == '8*11') {
+                        booktype2 = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype2 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype2 = 0.500
+                    } else {}
+                } else {}
+               
+
+
+               // debugger;
+                var production_cost = 0;
+                if (no_of_pages > 0) {
+                    production_cost = no_of_pages * booktype2 + 8.5;
+                } else {
+                    production_cost = 0;
+                }
+                var prodsubpercentage = production_cost * 0.15;
+                var subsidPrice = production_cost + prodsubpercentage;
+                subsidPrice = parseFloat(subsidPrice).toFixed(2);
+                // alert(subsidPrice+'MultiColor!1');
+                // alert("production_cost:"+production_cost);
+                var additional_author_copy = $("#additional_author_copies_number").val();
+                // var  number_additional_copy = $("#additional_author_copies_number").val();
+                // var cost_total1 = subsidPrice*additional_author_copy;
+                //               var cost_total2 =  additional_author_copy*30;
+                //               var cost_total = cost_total1+cost_total2;
+                //      $("#cost_of_additional").val(Math.round(cost_total));
+                var package_value_for_cs = package_value_for_c;
+               
+                //  alert("package value c: "+package_value_for_c);
+               // debugger;
+                var val_of_colorrr = 0;
+                if ($('.color_pages').is(":checked")) {
+                    var number_of_color = parseInt($("#color_pages_number").val());
+                    var total_color_par = no_of_pages * 0.30;
+                    if (number_of_color <= total_color_par) {
+                        val_of_color = number_of_color * 7;
+                        val_of_color_addi = val_of_color
+                        if ($("#additional_author_copies_number").val() != '') {
+                            val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        } else {
+                            val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        }
+                    } else {
+                        val_of_color = no_of_pages * 7;
+                        val_of_color_addi = val_of_color
+                        val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        amount = 0;
+                    }
+                    if ($("#additional_author_copies_number").val() != '') {
+                        package_value_for_cs = package_value_for_c + val_of_colorrr;
+                    } else {
+                        package_value_for_cs = package_value_for_c + val_of_color;
+
+                    }
+                } else {
+                    val_of_color = no_of_pages * 7;
+                    val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                }
+                if ($("#additional_author_copies_number").val() != '') {
+                    if ($('.color_pages').is(":checked")) {
+                        var val_of_color_of = val_of_color_addi * additional_author_copy
+                    } else {
+                        var val_of_color_of = additional_author_copy
+
+                    }
+
+                } else {
+                    var val_of_color_of = val_of_color * additional_author_copy
+                }
+                if ($("#color_pages_number").val() != '') {
+                    if (number_of_color <= total_color_par) {
+                        var cost_total1 = subsidPrice * additional_author_copy;
+                    } else {
+                        var cost_total1 = additional_author_copy;
+                    }
+                } else {
+                    var cost_total1 = subsidPrice * additional_author_copy;
+                }
+
+                // alert("additional_author_copy:"+additional_author_copy);
+                var cost_total2 = additional_author_copy * 30;
+                // console.log(cost_total1+'cost_total1')
+                // console.log(cost_total2+'cost_total2')
+                // console.log(val_of_color_of+'val_of_color_of')
+                var cost_total = parseInt(cost_total1 * 1) + parseInt(cost_total2 * 1) + parseInt(val_of_color_of * 1);
+                // if(cost_total==NaN){
+                //   cost_total=0
+                // }
+                $("#cost_of_additional").val(Math.round(cost_total));
+                var cost = production_cost + (production_cost * 40) / 100;
+                var amount = parseInt($("#number_of_complimentary_copies").val()) * cost;
+               
+                if ($('.color_pages').is(":checked")) {
+                    var number_of_color = $("#color_pages_number").val();
+                    var total_color_par = no_of_pages * 0.30;
+                    if (number_of_color <= total_color_par) {
+                        val_of_color = number_of_color * 7;
+                        val_of_color_addi = val_of_color
+                        if ($("#additional_author_copies_number").val() != '') {
+                            val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        } else {
+                            val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        }
+                    } else {
+                        val_of_color = no_of_pages * 7;
+                        val_of_color_addi = val_of_color
+                        val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        amount = 0;
+                    }
+                    if ($("#additional_author_copies_number").val() != '') {
+                        package_value_for_cs = package_value_for_c + val_of_colorrr;
+                        //  alert(package_value_for_cs);
+                        console.log(package_value_for_c + ' package_value_for_c');
+                        console.log(val_of_colorrr + ' val_of_colorrr');
+                    } else {
+                        package_value_for_cs = package_value_for_c + val_of_color;
+                        console.log(package_value_for_c + ' package_value_for_c1');
+                        console.log(val_of_color + ' val_of_colorrr1');
+                    }
+                    console.log(package_value_for_cs + ' package_value_for_cs');
+                } else {
+                    console.log(package_value_for_cs + ' package_value_for_cs');
+
+                    val_of_color = no_of_pages * 7;
+                    val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                }
+                var package_value = (package_value_for_cs + (package_value_for_cs * 0.40)) + amount;
+                // alert(production_cost+' package_cost');
+                // alert(cost+' cost');
+                // alert(amount+' amount');
+                // alert(package_value_for_c+' package_value_for_c');
+                console.log(package_value + ' package_value');
+                console.log(amount + ' amount');
+                // console.log(package_value+' package_value');
+                $("#package_value").val(Math.round(package_value));
+                $("#less_package_value").val(Math.round(package_value));
+                var total_amount = (package_value * 18) / 100;
+                $("#gst").val(Math.round(total_amount));
+                total_amount_data = total_amount + package_value;
+                $("#total_amount").val(Math.round(total_amount_data));
+                var after_total_additional_copy = cost_total + total_amount_data;
+                $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
+                var total_amount_d = $("#total_amount").val();
+                //  alert("package_value:"+package_value);
+                total_amount_d = after_total_additional_copy;
+                var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
+                var discount_40_ = (40 / 100) * total_amount_d;
+                var discount_20 = total_amount_d - (discount_40 + discount_40);
+                var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
+                var discount_20_1 = ((20 / 100) * total_amount_d);
+                $("#first_p1").val(discount_40_)
+                $("#first_p2").val(discount_40_)
+                $("#first_p3").val(discount_20_1)
+                document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+                document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+                document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
+                document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
+                document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
+                document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
+            } else if (book_format == 'Hardbound-Jacket') {
+                var booktype3 = 0;
+                if (no_of_pages <= 72) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.605
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.718
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.85
+                    } else {}
+                } else if (no_of_pages >= 73 && no_of_pages <= 96) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.605
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.718
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.85
+                    } else {}
+                } else if (no_of_pages >= 97 && no_of_pages <= 108) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.533
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.602
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.74
+                    } else {}
+                } else if (no_of_pages >= 109 && no_of_pages <= 128) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.533
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.602
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.70
+                    } else {}
+                } else if (no_of_pages >= 129 && no_of_pages <= 148) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.460
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.573
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.68
+                    } else {}
+                } else if (no_of_pages >= 149 && no_of_pages <= 192) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.460
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.573
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.62
+                    } else {}
+                } else if (no_of_pages >= 193 && no_of_pages <= 216) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.62
+                    } else {}
+                } else if (no_of_pages >= 217 && no_of_pages <= 252) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.59
+                        1
+                    } else {}
+                } else if (no_of_pages >= 253 && no_of_pages <= 256) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.424
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.537
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.59
+                    } else {}
+                } else if (no_of_pages >= 257 && no_of_pages <= 276) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.413
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.515
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.59
+                    } else {}
+                } else if (no_of_pages >= 277 && no_of_pages <= 320) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.413
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.515
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.57
+                    } else {}
+                } else if (no_of_pages >= 321 && no_of_pages <= 352) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.57
+                    } else {}
+                } else if (no_of_pages >= 353 && no_of_pages <= 384) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.56
+                    } else {}
+                } else if (no_of_pages >= 385 && no_of_pages <= 432) {
+                    if (book_size == '5*8') {
+                        booktype3 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.500
+                    } else if (book_size == '8*11') {
+                        booktype3 = 0.55
+                    } else {}
+                } else if (no_of_pages >= 433 && no_of_pages <= 492) {
+                    if (book_size == '8*11') {
+                        booktype3 = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype3 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.500
+                    } else {}
+                } else if (no_of_pages >= 493 && no_of_pages <= 548) {
+                    if (book_size == '8*11') {
+                        booktype3 = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype3 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.500
+                    } else {}
+                } else if (no_of_pages >= 549) {
+                    if (book_size == '8*11') {
+                        booktype3 = 0.54
+                    }
+                    if (book_size == '5*8') {
+                        booktype3 = 0.405
+                    } else if (book_size == '6*9') {
+                        booktype3 = 0.500
+                    } else {}
+                } else {}
+                console.log('test6')
+                // console.log(no_of_pages+'no_of_pages')
+                // console.log(booktype3+'booktype3')
+                var production_cost = no_of_pages * booktype3 + 55;
+                // console.log(production_cost+'production_cost')
+                var cost = production_cost + (production_cost * 40) / 100;
+                // console.log(cost+'cost')
+                var amount = parseInt($("#number_of_complimentary_copies").val()) * cost;
+                // console.log(amount+'amount')
+                var number_additional_copy = $("#additional_author_copies_number").val();
+                console.log('Multicolor');
+                console.log('book_format'+book_format);
+                console.log('no_of_pages'+no_of_pages);
+                console.log('Multicolor'+book_size);
+                console.log('Multicolor'+booktype2);
+                console.log('production_cost'+production_cost);
+                console.log('subsidPrice'+subsidPrice);
+                console.log('additional_author_copy'+additional_author_copy);
+                console.log('package_value_for_c'+package_value_for_c);
+                console.log('amount'+amount);
+                
+               
+                var package_value_for_c_bound = ''; // added to handle package value change while editing switching bw multi & hardbound 
+                if ($('.color_pages').is(":checked")) {
+                    var number_of_color = $("#color_pages_number").val();
+                    var total_color_par = no_of_pages * 0.30;
+                    if (number_of_color <= total_color_par) {
+                        val_of_color = number_of_color * 7;
+                        val_of_color_addi = val_of_color
+                        if ($("#additional_author_copies_number").val() != '') {
+                            val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        } else {
+                            val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        }
+                        alert(val_of_colorrr+'val_of_colorrr');
+                        alert(val_of_color+'val_of_color');
+
+                    } else {
+                        val_of_color = no_of_pages * 7;
+                        val_of_color_addi = val_of_color
+                        val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                        amount = parseInt($("#number_of_complimentary_copies").val()) * 55;
+                        amount = amount + (amount * 0.40);
+                    }
+
+                   ////rock
+                    if ($("#additional_author_copies_number").val() != '') {
+                        package_value_for_c = package_value_for_c + val_of_colorrr;
+                    } else {
+                        package_value_for_c = package_value_for_c + val_of_color;
+                    }
+                } else {
+                    val_of_color = no_of_pages * 7;
+                    val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+
+                }
+
+               
+                var package_value = (package_value_for_c + (package_value_for_c * 0.40)) + amount;
+                // console.log(package_value+"package_value")
+                var prodsubpercentage = production_cost * 0.15;
+                var subsidPrice = production_cost + prodsubpercentage;
+                subsidPrice = parseFloat(subsidPrice).toFixed(2);
+                // // alert(subsidPrice+'Hardbound');
+                //     var additional_author_copy = $("#additional_author_copies_number").val();
+                //     var cost_total1 = subsidPrice*additional_author_copy;
+                //               var cost_total2 =  additional_author_copy*40;
+                //               var cost_total = cost_total1+cost_total2;
+                //      $("#cost_of_additional").val(Math.round(cost_total));
+                var additional_author_copy = $("#additional_author_copies_number").val();
+                if ($("#additional_author_copies_number").val() != '') {
+                    if ($('.color_pages').is(":checked")) {
+                        var val_of_color_of = val_of_color_addi * additional_author_copy
+                    } else {
+                        var val_of_color_of = additional_author_copy
+                    }
+                } else {
+                    var val_of_color_of = val_of_color * additional_author_copy
+                }
+                val_of_color_of = val_of_color_of + (val_of_color_of * 0.15);
+                if ($("#color_pages_number").val() != '') {
+                    if (number_of_color <= total_color_par) {
+                        var cost_total1 = subsidPrice * additional_author_copy;
+                        // console.log(subsidPrice+'subsidPrice')
+                        // console.log(additional_author_copy+'additional_author_copy')
+                    } else {
+                        var cost_total1 = additional_author_copy * 55;
+                    }
+                } else {
+                    var cost_total1 = subsidPrice * additional_author_copy;
+                }
+                var cost_total2 = additional_author_copy * 40;
+                // console.log(cost_total1+'cost_total1')
+                // console.log(cost_total2+'cost_total2')
+                // console.log(val_of_color_of+'val_of_color_of')
+                var cost_total = parseInt(cost_total1) + parseInt(cost_total2) + parseInt(val_of_color_of);
+                $("#cost_of_additional").val(Math.round(cost_total));
+                $("#package_value").val(Math.round(package_value));
+                $("#less_package_value").val(Math.round(package_value));
+                var total_amount = (package_value * 18) / 100;
+                $("#gst").val(Math.round(total_amount));
+                total_amount_data = total_amount + package_value;
+                var after_total_additional_copy = cost_total + total_amount_data;
+                $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
+                $("#total_amount").val(Math.round(total_amount_data));
+                var total_amount_d = $("#total_amount").val();
+                total_amount_d = after_total_additional_copy;
+                var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
+                var discount_40_ = (40 / 100) * total_amount_d;
+                var discount_20 = total_amount_d - (discount_40 + discount_40);
+                var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
+                var discount_20_1 = ((20 / 100) * total_amount_d);
+                $("#first_p1").val(discount_40_)
+                $("#first_p2").val(discount_40_)
+                $("#first_p3").val(discount_20_1)
+                document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+                document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+                document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
+                document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
+                document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
+                document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
+            }
+        }
+        alert(multi_create_pack);
+    } else {
+        //here start the create code for multicolor_code
+        var book_format = $(this).val();
+        var no_of_pages = parseInt($("#number_of_pages_for_sc").val());
+        var book_size = $('#book_size_sc :selected').text();
+        let booktype2 = 0;
+        // alert(package_value_for_c);
+        if (book_format == 'MultiColor' || book_format == 'MultiColor 250 GSM') {
+            if (no_of_pages <= 72) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.605
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.718
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.85
+                } else {}
+            } else if (no_of_pages >= 73 && no_of_pages <= 96) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.605
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.718
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.85
+                } else {}
+            } else if (no_of_pages >= 97 && no_of_pages <= 108) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.533
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.602
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.74
+                } else {}
+            } else if (no_of_pages >= 109 && no_of_pages <= 128) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.533
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.602
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.70
+                } else {}
+            } else if (no_of_pages >= 129 && no_of_pages <= 148) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.460
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.573
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.68
+                } else {}
+            } else if (no_of_pages >= 149 && no_of_pages <= 192) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.460
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.573
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.62
+                } else {}
+            } else if (no_of_pages >= 193 && no_of_pages <= 216) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.424
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.537
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.62
+                } else {}
+            } else if (no_of_pages >= 217 && no_of_pages <= 252) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.424
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.537
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.59
+                } else {}
+            } else if (no_of_pages >= 253 && no_of_pages <= 256) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.424
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.537
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.59
+                } else {}
+            } else if (no_of_pages >= 257 && no_of_pages <= 276) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.413
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.515
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.59
+                } else {}
+            } else if (no_of_pages >= 277 && no_of_pages <= 320) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.413
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.515
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.57
+                } else {}
+            } else if (no_of_pages >= 321 && no_of_pages <= 352) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.500
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.57
+                } else {}
+            } else if (no_of_pages >= 353 && no_of_pages <= 384) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.500
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.56
+                } else {}
+            } else if (no_of_pages >= 385 && no_of_pages <= 432) {
+                if (book_size == '5*8') {
+                    booktype2 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.500
+                } else if (book_size == '8*11') {
+                    booktype2 = 0.55
+                } else {}
+            } else if (no_of_pages >= 433 && no_of_pages <= 492) {
+                if (book_size == '8*11') {
+                    booktype2 = 0.54
+                }
+                if (book_size == '5*8') {
+                    booktype2 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.500
+                } else {}
+            } else if (no_of_pages >= 493 && no_of_pages <= 548) {
+                if (book_size == '8*11') {
+                    booktype2 = 0.54
+                }
+                if (book_size == '5*8') {
+                    booktype2 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.500
+                } else {}
+            } else if (no_of_pages >= 549) {
+                if (book_size == '8*11') {
+                    booktype2 = 0.54
+                }
+                if (book_size == '5*8') {
+                    booktype2 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype2 = 0.500
+                } else {}
+            } else {}
+            console.log('test8')
+            var production_cost = no_of_pages * booktype2 + 8.5;
+            var prodsubpercentage = production_cost * 0.15;
+            var subsidPrice = production_cost + prodsubpercentage;
+            subsidPrice = parseFloat(subsidPrice).toFixed(2);
+            console.log(production_cost + ' production_cost')
+
+            var cost = production_cost + (production_cost * 40) / 100;
+            var amount = parseInt($("#number_of_complimentary_copies").val()) * cost;
+            var number_additional_copy = $("#additional_author_copies_number").val();
+            var package_value_for_cs = package_value_for_c
+            var val_of_colorrr = 0;
+            if ($('.color_pages').is(":checked")) {
+                var number_of_color = $("#color_pages_number").val();
+                var total_color_par = no_of_pages * 0.30;
+                if (number_of_color <= total_color_par) {
+                    val_of_color = number_of_color * 7;
+                    val_of_color_addi = val_of_color
+                    if ($("#additional_author_copies_number").val() != '') {
+                        val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                    } else {
+                        val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                    }
+                } else {
+                    val_of_color = no_of_pages * 7;
+                    val_of_color_addi = val_of_color
+                    val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                    val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                    amount = 0;
+                }
+                if ($("#additional_author_copies_number").val() != '') {
+                    package_value_for_cs = package_value_for_c + val_of_colorrr;
+                } else {
+                    package_value_for_cs = package_value_for_c + val_of_color;
+                }
+            } else {
+                val_of_color = no_of_pages * 7;
+                val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+            }
+
+            var package_value = (package_value_for_cs + (package_value_for_cs * 0.40)) + amount;
+            var additional_author_copy = $("#additional_author_copies_number").val();
+            if ($("#additional_author_copies_number").val() != '') {
+                if ($('.color_pages').is(":checked")) {
+                    var val_of_color_of = val_of_color_addi * additional_author_copy
+                } else {
+                    var val_of_color_of = additional_author_copy
+
+                }
+
+            } else {
+                var val_of_color_of = val_of_color * additional_author_copy
+            }
+            //val_of_color_of = val_of_color_of+(val_of_color_of*0.15);
+            if ($("#color_pages_number").val() != '') {
+                if (number_of_color <= total_color_par) {
+                    var cost_total1 = subsidPrice * additional_author_copy;
+                } else {
+                    var cost_total1 = additional_author_copy;
+                }
+            } else {
+                var cost_total1 = subsidPrice * additional_author_copy;
+            }
+            var cost_total2 = additional_author_copy * 30;
+            var cost_total = parseInt(cost_total1) + parseInt(cost_total2) + parseInt(val_of_color_of);
+            $("#cost_of_additional").val(Math.round(cost_total));
+            $("#package_value").val(Math.round(package_value));
+            $("#less_package_value").val(Math.round(package_value));
+            var total_amount = (package_value * 18) / 100;
+            $("#gst").val(Math.round(total_amount));
+            total_amount_data = total_amount + package_value;
+            $("#total_amount").val(Math.round(total_amount_data));
+            var after_total_additional_copy = cost_total + total_amount_data;
+            $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
+            var total_amount_d = $("#total_amount").val();
+            if ($("#additional_author_copies_number").val() != '') {
+                total_amount_d = after_total_additional_copy;
+            } else {
+                total_amount_d = total_amount_data;
+            }
+            var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
+            var discount_40_ = (40 / 100) * total_amount_d;
+            var discount_20 = total_amount_d - (discount_40 + discount_40);
+            var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
+            var discount_20_1 = ((20 / 100) * total_amount_d);
+            $("#first_p1").val(discount_40_)
+            $("#first_p2").val(discount_40_)
+            $("#first_p3").val(discount_20_1)
+            document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+            document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+            document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
+            document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
+            document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
+            document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
+        } else if (book_format == 'Hardbound-Jacket') {
+            //this is for create package time and for hardbound
+            var booktype3 = 0;
+            if (no_of_pages <= 72) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.605
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.718
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.85
+                } else {}
+            } else if (no_of_pages >= 73 && no_of_pages <= 96) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.605
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.718
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.85
+                } else {}
+            } else if (no_of_pages >= 97 && no_of_pages <= 108) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.533
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.602
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.74
+                } else {}
+            } else if (no_of_pages >= 109 && no_of_pages <= 128) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.533
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.602
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.70
+                } else {}
+            } else if (no_of_pages >= 129 && no_of_pages <= 148) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.460
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.573
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.68
+                } else {}
+            } else if (no_of_pages >= 149 && no_of_pages <= 192) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.460
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.573
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.62
+                } else {}
+            } else if (no_of_pages >= 193 && no_of_pages <= 216) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.424
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.537
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.62
+                } else {}
+            } else if (no_of_pages >= 217 && no_of_pages <= 252) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.424
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.537
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.59
+                    1
+                } else {}
+            } else if (no_of_pages >= 253 && no_of_pages <= 256) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.424
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.537
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.59
+                } else {}
+            } else if (no_of_pages >= 257 && no_of_pages <= 276) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.413
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.515
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.59
+                } else {}
+            } else if (no_of_pages >= 277 && no_of_pages <= 320) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.413
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.515
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.57
+                } else {}
+            } else if (no_of_pages >= 321 && no_of_pages <= 352) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.500
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.57
+                } else {}
+            } else if (no_of_pages >= 353 && no_of_pages <= 384) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.500
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.56
+                } else {}
+            } else if (no_of_pages >= 385 && no_of_pages <= 432) {
+                if (book_size == '5*8') {
+                    booktype3 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.500
+                } else if (book_size == '8*11') {
+                    booktype3 = 0.55
+                } else {}
+            } else if (no_of_pages >= 433 && no_of_pages <= 492) {
+                if (book_size == '8*11') {
+                    booktype3 = 0.54
+                }
+                if (book_size == '5*8') {
+                    booktype3 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.500
+                } else {}
+            } else if (no_of_pages >= 493 && no_of_pages <= 548) {
+                if (book_size == '8*11') {
+                    booktype3 = 0.54
+                }
+                if (book_size == '5*8') {
+                    booktype3 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.500
+                } else {}
+            } else if (no_of_pages >= 549) {
+                if (book_size == '8*11') {
+                    booktype3 = 0.54
+                }
+                if (book_size == '5*8') {
+                    booktype3 = 0.405
+                } else if (book_size == '6*9') {
+                    booktype3 = 0.500
+                } else {}
+            } else {}
+            console.log('test10')
+            var production_cost = no_of_pages * booktype3 + 55;
+            console.log(production_cost + 'production_cost')
+            var prodsubpercentage = production_cost * 0.15;
+            var subsidPrice = production_cost + prodsubpercentage;
+            subsidPrice = parseFloat(subsidPrice).toFixed(2);
+            var cost = production_cost + (production_cost * 40) / 100;
+            console.log(cost + 'cost')
+            var amount = parseInt($("#number_of_complimentary_copies").val()) * cost;
+            console.log(amount + 'amount')
+            var number_additional_copy = $("#additional_author_copies_number").val();
+            var package_value_for_cs = package_value_for_c
+            var val_of_colorrr = 0;
+            if ($('.color_pages').is(":checked")) {
+                var number_of_color = $("#color_pages_number").val();
+                var total_color_par = no_of_pages * 0.30;
+                if (number_of_color <= total_color_par) {
+                    val_of_color = number_of_color * 7;
+                    val_of_color_addi = val_of_color
+                    if ($("#additional_author_copies_number").val() != '') {
+                        val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                    } else {
+                        val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                    }
+                } else {
+                    val_of_color = no_of_pages * 7;
+                    val_of_color_addi = val_of_color
+                    val_of_colorrr = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                    val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+                    amount = parseInt($("#number_of_complimentary_copies").val()) * 55;
+                    amount = amount + (amount * 0.40);
+                }
+                if ($("#additional_author_copies_number").val() != '') {
+                    package_value_for_cs = package_value_for_c + val_of_colorrr;
+                } else {
+                    package_value_for_cs = package_value_for_c + val_of_color;
+                }
+            } else {
+                val_of_color = no_of_pages * 7;
+                val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
+
+            }
+
+            var package_value = (package_value_for_cs + (package_value_for_cs * 0.40)) + amount;
+            console.log(package_value + 'package_value')
+            var additional_author_copy = $("#additional_author_copies_number").val();
+            if ($("#additional_author_copies_number").val() != '') {
+                if ($('.color_pages').is(":checked")) {
+                    var val_of_color_of = val_of_color_addi * additional_author_copy
+                } else {
+                    var val_of_color_of = additional_author_copy
+                }
+            } else {
+                var val_of_color_of = val_of_color * additional_author_copy
+            }
+            val_of_color_of = val_of_color_of + (val_of_color_of * 0.15);
+            if ($("#color_pages_number").val() != '') {
+                if (number_of_color <= total_color_par) {
+                    var cost_total1 = subsidPrice * additional_author_copy;
+                } else {
+                    var cost_total1 = additional_author_copy * 55;
+                }
+            } else {
+                var cost_total1 = subsidPrice * additional_author_copy;
+            }
+            var cost_total2 = additional_author_copy * 40;
+            var cost_total = parseInt(cost_total1) + parseInt(cost_total2) + parseInt(val_of_color_of);
+            $("#cost_of_additional").val(Math.round(cost_total));
+            $("#package_value").val(Math.round(package_value));
+            $("#less_package_value").val(Math.round(package_value));
+            var total_amount = (package_value * 18) / 100;
+            $("#gst").val(Math.round(total_amount));
+            total_amount_data = total_amount + package_value;
+            $("#total_amount").val(Math.round(total_amount_data));
+            var after_total_additional_copy = cost_total + total_amount_data;
+            $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
+            var total_amount_d = $("#total_amount").val();
+            total_amount_d = after_total_additional_copy;
+            var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
+            var discount_40_ = (40 / 100) * total_amount_d;
+            var discount_20 = total_amount_d - (discount_40 + discount_40);
+            var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
+            var discount_20_1 = ((20 / 100) * total_amount_d);
+            $("#first_p1").val(discount_40_)
+            $("#first_p2").val(discount_40_)
+            $("#first_p3").val(discount_20_1)
+            document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+            document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
+            document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
+            document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
+            document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
+            document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
+        }
     }
-}else{
-var val_of_color_of = val_of_color*additional_author_copy
-}
-val_of_color_of = val_of_color_of+(val_of_color_of*0.15);
-if ($("#color_pages_number").val() != '') {
-if (number_of_color <= total_color_par ) {
-var cost_total1 = subsidPrice*additional_author_copy;
-}else{
-var cost_total1 = additional_author_copy*55;
-}
-}else{
-var cost_total1 = subsidPrice*additional_author_copy;
-}
- var cost_total2 =  additional_author_copy*40;
- var cost_total = parseInt(cost_total1)+parseInt(cost_total2)+parseInt(val_of_color_of);
-$("#cost_of_additional").val(Math.round(cost_total));
-$("#package_value").val(Math.round(package_value));
-$("#less_package_value").val(Math.round(package_value));
-   var total_amount = (package_value * 18) / 100;
-   $("#gst").val(Math.round(total_amount));
-   total_amount_data = total_amount + package_value;
-   $("#total_amount").val(Math.round(total_amount_data));
-   var after_total_additional_copy = cost_total+total_amount_data;
-   $("#additional_gross_amount").val(Math.round(after_total_additional_copy));
-    var total_amount_d = $("#total_amount").val();
-    total_amount_d = after_total_additional_copy;
-                               var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
-                               var discount_40_ = (40 / 100) * total_amount_d;
-                               var discount_20 = total_amount_d - (discount_40 + discount_40);
-                               var discount_20_ = ((20 / 100) * total_amount_d).toFixed(2);
-                               var discount_20_1 = ((20 / 100) * total_amount_d);
-                                            $("#first_p1").val(discount_40_)
-                            $("#first_p2").val(discount_40_)
-                            $("#first_p3").val(discount_20_1)
-                             document.getElementById("prec_40").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                               document.getElementById("prec_40_").innerHTML = '(₹ ' + Math.round(discount_40) + ')';
-                               document.getElementById("prec_20").innerHTML = '(₹ ' + Math.round(discount_20_) + ')';
-                               document.getElementById("prec_400").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                               document.getElementById("prec_400_").innerHTML = '₹ ' + Math.round(discount_40) + '';
-                               document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
-      }
-              }
-        });
+});
   function myFunctiondatacomplimentry(id, cost) {
         var no_of_copy = $("#complimentry_copies").val();
         var cost = no_of_copy*100;
