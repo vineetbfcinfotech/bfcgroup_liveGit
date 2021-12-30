@@ -364,16 +364,22 @@ session_start();
     $(document).ready(function(){
         $('#sel_pack_btn').click(function(){
             package = $("#package_sel").val();
-            if(package!=''){
-                alert(package)
+            if(package =='1'){
+                alert(package);
+                lead_id = $('#hidden_lead_id').val();
+                alert(lead_id);
+                // $('#second_package').show();
+                // $('#first_package').hide();
+            }else if(package =='2'){
+                alert(package);
                 lead_id = $('#hidden_lead_id').val();
                 // compair_id = $('#second_pac_id').val();
                 compair_id = <?= $compare_id->id; ?>;
+                alert(compair_id)
                 data = {
                     'lead_id':lead_id,
                     'compair_id':compair_id
                 }
-                alert(compair_id)
                 $.ajax({
                     url:"<?php echo base_url(); ?>admin/leads/swap_package",
                     method:'POST',
@@ -381,9 +387,7 @@ session_start();
                     success: function(data){
                         console.log('got data from swap: '+data);
                     }
-                })
-                // $('#second_package').show();
-                // $('#first_package').hide();
+                });
             }else{
                 alert("Select a Package.");
                 $("#package_sel").focus();

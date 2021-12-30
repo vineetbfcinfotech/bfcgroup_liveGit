@@ -12685,7 +12685,71 @@ public function reffer_lead_check()
     public function swap_package(){
         $lead_id = $this->input->post("lead_id");
         $compair_id = $this->input->post("compair_id");
-        $data1 = $this->db->select('')
+        $data1 = $this->db->select('lead_package_detail,lead_ori_packge_value,lead_book_type,lead_package_name,lead_service,lead_sub_service,complimentry_copies,book_cover_sc,paper_type_sc,book_size_sc,lamination_sc,lead_packge_value,lead_lesspckg_value,lead_packg_gst,lead_packg_totalamount,lead_book_pages,lead_pdf_data,cost_of_additional_copy,lead_booking_amount,gross_amt,create_p_offer,color_pages,additional_author_copy,lead_packge_discount')->where('id',$lead_id)->get('tblleads')->row();
+        $data2 = $this->db->select('lead_package_detail,lead_ori_packge_value,lead_book_type,lead_package_name,lead_service,lead_sub_service,complimentry_copies,book_cover_sc,paper_type_sc,book_size_sc,lamination_sc,lead_packge_value,lead_lesspckg_value,lead_packg_gst,lead_packg_totalamount,lead_book_pages,lead_pdf_data,cost_of_additional_copy,lead_booking_amount,gross_amt,create_p_offer,color_pages,additional_author_copy,lead_packge_discount')->where('id',$compair_id)->get('compaire_create_package')->row();
+        $updata1 = array(
+            'lead_package_detail'=> $data1->lead_package_detail,
+            'lead_ori_packge_value'=> $data1->lead_ori_packge_value,
+            'lead_book_type'=> $data1->lead_book_type,
+            'lead_package_name'=> $data1->lead_package_name,
+            'lead_service'=> $data1->lead_service,
+            'lead_sub_service'=> $data1->lead_sub_service,
+            'complimentry_copies'=> $data1->complimentry_copies,
+            'book_cover_sc'=> $data1->book_cover_sc,
+            'paper_type_sc'=> $data1->paper_type_sc,
+            'book_size_sc'=> $data1->book_size_sc,
+            'lamination_sc'=> $data1->lamination_sc,
+            'lead_packge_value'=> $data1->lead_packge_value,
+            'lead_lesspckg_value'=> $data1->lead_lesspckg_value,
+            'lead_packg_gst'=> $data1->lead_packg_gst,
+            'lead_packg_totalamount'=> $data1->lead_packg_totalamount,
+            'lead_book_pages'=> $data1->lead_book_pages,
+            'lead_pdf_data'=> $data1->lead_pdf_data,
+            'cost_of_additional_copy'=> $data1->cost_of_additional_copy,
+            'lead_booking_amount'=> $data1->lead_booking_amount,
+            'gross_amt'=> $data1->gross_amt,
+            'create_p_offer'=> $data1->create_p_offer,
+            'color_pages'=> $data1->color_pages,
+            'additional_author_copy'=> $data1->additional_author_copy,
+            'lead_packge_discount'=> $data1->lead_packge_discount
+        );
+        $updata2 = array(
+            'lead_package_detail'=> $data2->lead_package_detail,
+            'lead_ori_packge_value'=> $data2->lead_ori_packge_value,
+            'lead_book_type'=> $data2->lead_book_type,
+            'lead_package_name'=> $data2->lead_package_name,
+            'lead_service'=> $data2->lead_service,
+            'lead_sub_service'=> $data2->lead_sub_service,
+            'complimentry_copies'=> $data2->complimentry_copies,
+            'book_cover_sc'=> $data2->book_cover_sc,
+            'paper_type_sc'=> $data2->paper_type_sc,
+            'book_size_sc'=> $data2->book_size_sc,
+            'lamination_sc'=> $data2->lamination_sc,
+            'lead_packge_value'=> $data2->lead_packge_value,
+            'lead_lesspckg_value'=> $data2->lead_lesspckg_value,
+            'lead_packg_gst'=> $data2->lead_packg_gst,
+            'lead_packg_totalamount'=> $data2->lead_packg_totalamount,
+            'lead_book_pages'=> $data2->lead_book_pages,
+            'lead_pdf_data'=> $data2->lead_pdf_data,
+            'cost_of_additional_copy'=> $data2->cost_of_additional_copy,
+            'lead_booking_amount'=> $data2->lead_booking_amount,
+            'gross_amt'=> $data2->gross_amt,
+            'create_p_offer'=> $data2->create_p_offer,
+            'color_pages'=> $data2->color_pages,
+            'additional_author_copy'=> $data2->additional_author_copy,
+            'lead_packge_discount'=> $data2->lead_packge_discount
+        );
+        $upleads = $this->db->where('id',$lead_id)->update('tblleads',$updata2);
+        $upcompair = $this->db->where('id',$compair_id)->update('compaire_create_package',$updata1);
+        echo "<pre>";
+        if($upleads){
+            print_r($upleads);
+        }
+        if($upcompair){
+            print_r($upcompair);
+        }
+        // print_r($updata2);
+
         echo "test";
     }
 }
