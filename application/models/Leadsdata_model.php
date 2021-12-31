@@ -70,10 +70,18 @@ if (is_admin() || is_headtrm()) {
 		$this->db->select('*');
 		$this->db->from('tblstaff');
 		$this->db->join('tblleads', 'tblleads.assigned = tblstaff.staffid');
-		 $this->db->where(array('tblstaff.pm_assign_to' => $pm_id, 'tblleads.pm_project_status' => '1' ));
+		$this->db->where(array('tblstaff.pm_assign_to' => $pm_id, 'tblleads.pm_project_status' => '1'));
+		$this->db->where("DATE_FORMAT(tblleads.lead_booking_amount_date,'%Y-%m-%d') >= DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ");
 		 $this->db->order_by('tblleads.lead_booking_amount_date','DESC');
-		 $query = $this->db->get();
-		return $query->result();
+		 $query1 = $this->db->get()->result();
+		//   echo $this->db->last_query();
+		 $query2 = $this->db->query("SELECT * FROM `tblstaff` JOIN `tblleads` ON `tblleads`.`assigned` = `tblstaff`.`staffid` WHERE `tblstaff`.`pre_pm_assign_to` = '".$pm_id."' AND `tblleads`.`pm_project_status` = '1' AND DATE_FORMAT(tblleads.lead_booking_amount_date,'%Y-%m-%d') < DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ORDER BY `tblleads`.`lead_booking_amount_date` DESC;")->result();
+		 $query = array_merge($query1,$query2);
+		
+		//  echo "<pre>";
+		//  print_r($query);exit;
+		//  die();
+		return $query;
 }
 		
 

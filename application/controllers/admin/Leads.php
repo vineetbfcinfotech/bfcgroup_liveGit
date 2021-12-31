@@ -12737,7 +12737,8 @@ public function reffer_lead_check()
             'create_p_offer'=> $data2->create_p_offer,
             'color_pages'=> $data2->color_pages,
             'additional_author_copy'=> $data2->additional_author_copy,
-            'lead_packge_discount'=> $data2->lead_packge_discount
+            'lead_packge_discount'=> $data2->lead_packge_discount,
+            'package_swap'=> 1
         );
         $upleads = $this->db->where('id',$lead_id)->update('tblleads',$updata2);
         $upcompair = $this->db->where('id',$compair_id)->update('compaire_create_package',$updata1);

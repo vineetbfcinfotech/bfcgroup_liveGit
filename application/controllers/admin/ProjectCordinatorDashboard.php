@@ -167,17 +167,27 @@ class ProjectCordinatorDashboard extends Admin_controller{
 		 $list['data'] = $this->Project_Cordinator_Dashboard_modal->get_pc($pc_id);
 		 $list['pm_data'] = $this->Project_Cordinator_Dashboard_modal->get_pm($pm_id);
 		//  print_r( $list['pm_data']);die;
-
         $this->load->view('admin/Project_Cordinator/assign_pc',$list); 
 		
 	}
 	public function assign_pc_to_pm($value='')
 	{
 		$id = $this->input->post('hidden_id');
-		$data  = array(
-			'pm_assign_to' => $this->input->post('pm_assign')
+		$get_prev_assigned_id = $this->db->select('pm_assign_to')->get_where('tblstaff',array('staffid'=>$id))->row();
+		$prev_assigned_id = $get_prev_assigned_id->pm_assign_to;
+		$pre_data  = array(
+			'pre_pm_assign_to' => $prev_assigned_id			
 		);
-					$this->db->where('staffid',$this->input->post('hidden_id'));
+		$this->db->where('staffid',$this->input->post('hidden_id'));
+		$this->db->update('tblstaff',$pre_data);
+
+		
+
+		$data  = array(
+			'pm_assign_to' => $this->input->post('pm_assign'),
+			'pm_assign_date' => Date('Y-m-d')
+		);
+		$this->db->where('staffid',$this->input->post('hidden_id'));
 		$update = $this->db->update('tblstaff',$data);
 		// echo $this->db->last_query();die;
 		if ($update) {
