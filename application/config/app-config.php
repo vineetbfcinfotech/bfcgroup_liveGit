@@ -40,7 +40,7 @@ define('APP_ENC_KEY', 'c05b1e53c43335c6413c60e6ace80890');
    if ( $_SERVER['HTTP_HOST'] == 'localhost') {
       $username = 'root';
       $password = '';
-      $database = 'bfc_group_live';
+      $database = 'bfcpubli_bfcgroup_live_new';
    } else {
       $username = 'bfc_group';
       $password = 'BfcGroup@2022';

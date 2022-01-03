@@ -12743,14 +12743,15 @@ public function reffer_lead_check()
         $upleads = $this->db->where('id',$lead_id)->update('tblleads',$updata2);
         $upcompair = $this->db->where('id',$compair_id)->update('compaire_create_package',$updata1);
         echo "<pre>";
-        if($upleads){
-            print_r($upleads);
+        if($upleads==1 & $upcompair==1){
+            echo 1;
+            die();
         }
-        if($upcompair){
-            print_r($upcompair);
-        }
+        // if($upcompair){
+        //     print_r($upcompair);
+        // }
         // print_r($updata2);
 
-        echo "test";
+        // echo "test";
     }
 }

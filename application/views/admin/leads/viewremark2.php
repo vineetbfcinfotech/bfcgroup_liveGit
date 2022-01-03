@@ -198,10 +198,11 @@ session_start();
                     if( (isset($compare_id)) && ($compare_id->id !='')) { ?>
                         <div class="col-md-6">
                             <div class="form-group" app-field-wrapper="package_cost">
+                                <span class="text-danger display-block"><?php if($all_lead_data->package_swap==1){echo 'Package interchanged!'; } ?></span>
                                 <label for="select_package" class="control-label">Select Package</label>
                                 <select name="select_package" id="package_sel" <?php if($lead_status ==1 || $lead_status==2 || $lead_status==3 ){ echo "disabled"; }?> >
                                 <option value="">Select Package</option>
-                                <option value="1">First Package</option>
+                                <option value="1" selected >First Package</option>
                                 <option value="2">Second Package</option>
                                 </select>
                                 <input type="hidden" name="second_pac_id" value="<?= $compare_id->id; ?>">
@@ -386,6 +387,9 @@ session_start();
                     data:data,
                     success: function(data){
                         console.log('got data from swap: '+data);
+                        if(data==1){
+                            location.reload();
+                        }
                     }
                 });
             }else{
