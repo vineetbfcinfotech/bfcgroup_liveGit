@@ -3526,6 +3526,7 @@ public function table()
      public function update_custom_lead_remark()
     {
         //   print_r($_POST);
+        //   die();
            $id = $_POST['id'];
            $no_of_books= $_POST['books'];
 
@@ -3755,14 +3756,11 @@ public function table()
              
         }
         
-        
-        
-       
         //print_r($data);
         //print_r($id);
         $this->db->where('id', $id);
         $this->db->update('tblleads', $data);
-        echo $this->db->last_query();
+        // echo $this->db->last_query();
         if($remark != null) {
         $data2 = array('lead_id' => $id, 'remark' => $remark, 'added_by' => $added_by);
         $this->db->insert('tblleadremark', $data2);
@@ -12685,8 +12683,8 @@ public function reffer_lead_check()
     public function swap_package(){
         $lead_id = $this->input->post("lead_id");
         $compair_id = $this->input->post("compair_id");
-        $data1 = $this->db->select('lead_package_detail,lead_ori_packge_value,lead_book_type,lead_package_name,lead_service,lead_sub_service,complimentry_copies,book_cover_sc,paper_type_sc,book_size_sc,lamination_sc,lead_packge_value,lead_lesspckg_value,lead_packg_gst,lead_packg_totalamount,lead_book_pages,lead_pdf_data,cost_of_additional_copy,lead_booking_amount,gross_amt,create_p_offer,color_pages,additional_author_copy,lead_packge_discount')->where('id',$lead_id)->get('tblleads')->row();
-        $data2 = $this->db->select('lead_package_detail,lead_ori_packge_value,lead_book_type,lead_package_name,lead_service,lead_sub_service,complimentry_copies,book_cover_sc,paper_type_sc,book_size_sc,lamination_sc,lead_packge_value,lead_lesspckg_value,lead_packg_gst,lead_packg_totalamount,lead_book_pages,lead_pdf_data,cost_of_additional_copy,lead_booking_amount,gross_amt,create_p_offer,color_pages,additional_author_copy,lead_packge_discount')->where('id',$compair_id)->get('compaire_create_package')->row();
+        $data1 = $this->db->select('lead_package_detail,lead_ori_packge_value,lead_book_type,lead_package_name,lead_service,lead_sub_service,complimentry_copies,book_cover_sc,paper_type_sc,book_size_sc,lamination_sc,lead_packge_value,lead_lesspckg_value,lead_packg_gst,lead_packg_totalamount,lead_book_pages,lead_pdf_data,cost_of_additional_copy,lead_booking_amount,lead_first_installment,lead_final_payment,gross_amt,create_p_offer,color_pages,additional_author_copy,lead_packge_discount')->where('id',$lead_id)->get('tblleads')->row();
+        $data2 = $this->db->select('lead_package_detail,lead_ori_packge_value,lead_book_type,lead_package_name,lead_service,lead_sub_service,complimentry_copies,book_cover_sc,paper_type_sc,book_size_sc,lamination_sc,lead_packge_value,lead_lesspckg_value,lead_packg_gst,lead_packg_totalamount,lead_book_pages,lead_pdf_data,cost_of_additional_copy,lead_booking_amount,lead_first_installment,lead_final_payment,gross_amt,create_p_offer,color_pages,additional_author_copy,lead_packge_discount')->where('id',$compair_id)->get('compaire_create_package')->row();
         $updata1 = array(
             'lead_package_detail'=> $data1->lead_package_detail,
             'lead_ori_packge_value'=> $data1->lead_ori_packge_value,
@@ -12707,6 +12705,8 @@ public function reffer_lead_check()
             'lead_pdf_data'=> $data1->lead_pdf_data,
             'cost_of_additional_copy'=> $data1->cost_of_additional_copy,
             'lead_booking_amount'=> $data1->lead_booking_amount,
+            'lead_first_installment'=> $data1->lead_first_installment,
+            'lead_final_payment'=> $data1->lead_final_payment,
             'gross_amt'=> $data1->gross_amt,
             'create_p_offer'=> $data1->create_p_offer,
             'color_pages'=> $data1->color_pages,
@@ -12733,6 +12733,8 @@ public function reffer_lead_check()
             'lead_pdf_data'=> $data2->lead_pdf_data,
             'cost_of_additional_copy'=> $data2->cost_of_additional_copy,
             'lead_booking_amount'=> $data2->lead_booking_amount,
+            'lead_first_installment'=> $data2->lead_first_installment,
+            'lead_final_payment'=> $data2->lead_final_payment,
             'gross_amt'=> $data2->gross_amt,
             'create_p_offer'=> $data2->create_p_offer,
             'color_pages'=> $data2->color_pages,
@@ -12742,15 +12744,20 @@ public function reffer_lead_check()
         );
         $upleads = $this->db->where('id',$lead_id)->update('tblleads',$updata2);
         $upcompair = $this->db->where('id',$compair_id)->update('compaire_create_package',$updata1);
-        echo "<pre>";
-        if($upleads){
-            print_r($upleads);
+        // echo "<pre>";
+        if($upleads==1 & $upcompair==1){
+            $data = array(
+                'pass'=> 1,
+                'data'=>$updata2
+            );
+            echo json_encode($data);
+            die();
         }
-        if($upcompair){
-            print_r($upcompair);
-        }
+        // if($upcompair){
+        //     print_r($upcompair);
+        // }
         // print_r($updata2);
 
-        echo "test";
+        // echo "test";
     }
 }
