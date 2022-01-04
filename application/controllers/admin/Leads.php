@@ -11422,16 +11422,22 @@ echo $myJSON;
            $start_date = $this->input->post('start_date');
           $end_date = $this->input->post('end_date');
           $this->session->set_userdata(array("start_date"=>$start_date,"end_date"=>$end_date));
+          $next_calling = $this->input->post('nextcalling_date');
+          $manu_script = $this->input->post('manu_script');
+          $this->session->set_userdata(array("next_calling"=>$next_calling,"manu_script"=>$manu_script));
         }else{
-          if(($this->session->userdata('category_type') != NULL) ||  ($this->session->userdata('staff_name') != NULL) || ($this->session->userdata('start_date') != NULL) ){
+          if(($this->session->userdata('category_type') != NULL) ||  ($this->session->userdata('staff_name') != NULL) || ($this->session->userdata('start_date') != NULL) || ($this->session->userdata('manu_script') != NULL) || ($this->session->userdata('next_calling') != NULL) ){
             $staff_name = $this->session->userdata('staff_name');
             $search_cat = $this->session->userdata('category_type');
               $start_date = $this->session->userdata('start_date');
             $end_date = $this->session->userdata('end_date');
+            $next_calling = $this->session->userdata('next_calling');
+            $manu_script = $this->session->userdata('manu_script');
           }else{
           }
         }
-
+print_r($manu_script);
+print_r($next_calling);
         $useraid = $this->session->userdata('staff_user_id');
         $data['useraid'] = $useraid;
         $data['get_staff'] = $this->leads_model->get_pc();
@@ -12744,11 +12750,6 @@ public function reffer_lead_check()
         );
         $upleads = $this->db->where('id',$lead_id)->update('tblleads',$updata2);
         $upcompair = $this->db->where('id',$compair_id)->update('compaire_create_package',$updata1);
-<<<<<<< HEAD
-        echo "<pre>";
-        if($upleads==1 & $upcompair==1){
-            echo 1;
-=======
         // echo "<pre>";
         if($upleads==1 & $upcompair==1){
             $data = array(
@@ -12756,7 +12757,6 @@ public function reffer_lead_check()
                 'data'=>$updata2
             );
             echo json_encode($data);
->>>>>>> 2347ed0e6789b2fe1b22d6fb2785d0b571548b11
             die();
         }
         // if($upcompair){
