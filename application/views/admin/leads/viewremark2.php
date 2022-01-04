@@ -197,16 +197,20 @@ session_start();
                     <?php 
                     if( (isset($compare_id)) && ($compare_id->id !='')) { ?>
                         <div class="col-md-6">
+<<<<<<< HEAD
                             <div class="form-group" app-field-wrapper="package_cost">
+=======
+                            <div class="form-group" id="sel_pack_div" app-field-wrapper="package_cost">
+>>>>>>> 2347ed0e6789b2fe1b22d6fb2785d0b571548b11
                                 <span class="text-danger display-block"><?php if($all_lead_data->package_swap==1){echo 'Package interchanged!'; } ?></span>
                                 <label for="select_package" class="control-label">Select Package</label>
-                                <select name="select_package" id="package_sel" <?php if($lead_status ==1 || $lead_status==2 || $lead_status==3 ){ echo "disabled"; }?> >
+                                <select name="select_package" id="package_sel" <?php if($lead_status ==1 || $lead_status==2 || $lead_status==3 ){ echo "disabled"; }?> <?php if($all_lead_data->package_swap==1){echo "disabled"; } ?>>
                                 <option value="">Select Package</option>
                                 <option value="1" selected >First Package</option>
                                 <option value="2">Second Package</option>
                                 </select>
                                 <input type="hidden" name="second_pac_id" value="<?= $compare_id->id; ?>">
-                                <input type="button" class="btn btn-primary" id="sel_pack_btn" value="Select Package">
+                                <input type="button" class="btn <?php if($all_lead_data->package_swap==1){echo "btn-secondry"; }else{ echo "btn-primary";} ?>" id="sel_pack_btn" value="Select Package" <?php if($all_lead_data->package_swap==1){echo "disabled"; } ?> >
                             </div>
                         </div>
                     <?php } ?>
@@ -366,17 +370,17 @@ session_start();
         $('#sel_pack_btn').click(function(){
             package = $("#package_sel").val();
             if(package =='1'){
-                alert(package);
+                // alert(package);
                 lead_id = $('#hidden_lead_id').val();
-                alert(lead_id);
+                // alert(lead_id);
                 // $('#second_package').show();
                 // $('#first_package').hide();
             }else if(package =='2'){
-                alert(package);
+                // alert(package);
                 lead_id = $('#hidden_lead_id').val();
                 // compair_id = $('#second_pac_id').val();
                 compair_id = <?= $compare_id->id; ?>;
-                alert(compair_id)
+                // alert(compair_id)
                 data = {
                     'lead_id':lead_id,
                     'compair_id':compair_id
@@ -386,9 +390,39 @@ session_start();
                     method:'POST',
                     data:data,
                     success: function(data){
+<<<<<<< HEAD
                         console.log('got data from swap: '+data);
                         if(data==1){
                             location.reload();
+=======
+                        var responce = JSON.parse(data);
+                        // var resdata = JSON.parse(responce.data)
+                        // console.log('got data from swap: '+responce.data.gross_amt+' xyz');
+                        // console.log("gross "+responce.pass);
+                        if(responce.pass == 1){
+                            if(responce.data.cost_of_additional_copy>0){
+                                $('#package_cost').val(responce.data.gross_amt);
+                            }else{
+                                $('#package_cost').val(responce.data.lead_packg_totalamount);
+                            }
+                            $("#sel_pack_btn").attr('disabled' , true);
+                            $("#sel_pack_btn").removeClass('btn-primary');
+                            $("#sel_pack_btn").addClass( "btn-secondry");
+                            $("#package_sel").attr('disabled' , true);
+                            var package_cost = $('#package_cost').val();
+                            var booking_amount =  (package_cost/100)*40;
+                            var first_installment =  (package_cost/100)*40;
+                            var final_payment =  (package_cost/100)*20;
+                            booking_amount =  Math.round(booking_amount);
+                            first_installment =  Math.round(first_installment);
+                            final_payment =  Math.round(final_payment);
+                            document.getElementById("booking_amount").value = booking_amount;
+                            document.getElementById("finstallment").value = first_installment;
+                            document.getElementById("final_payment").value = final_payment;
+                            msg = '<span class="text-danger display-block">Package interchanged!</span>';
+                            $('#sel_pack_div').prepend(msg);
+                            // location.reload();
+>>>>>>> 2347ed0e6789b2fe1b22d6fb2785d0b571548b11
                         }
                     }
                 });
@@ -396,7 +430,7 @@ session_start();
                 alert("Select a Package.");
                 $("#package_sel").focus();
             }
-        })
+        });
         // $("#package_sel").change(function(){
         //     package = $(this).val();
         //     if(package=='1'){
@@ -568,7 +602,8 @@ session_start();
                 contentType: false,
                 processData: false,
                 data: form_data,
-                error: function () {
+                error: function (e) {
+                    console.log(e);
                     alert('Something is wrong');
                 },
                 success: function (data) {
