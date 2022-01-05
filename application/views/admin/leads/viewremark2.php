@@ -661,7 +661,7 @@ session_start();
                                 /*window.load();
                                 alert_float('success', 'Lead Updated Successfully');
                                 alert("test");*/
-                                // location.reload();
+                                location.reload();
                             }
                         });
                         

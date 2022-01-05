@@ -5911,9 +5911,11 @@ function business_report1($start,$length)
                 $this->db->where('assigned',$id);
             }
         }
+        // ms filter
         if($manu_script!=""){
             $this->db->where('lead_author_msstatus',$manu_script);
         }
+        // calling date filter
         $next_calling=(isset($next_calling) && trim($next_calling)!='')?date("Y-m-d",strtotime(trim($next_calling))):'';
         if($next_calling!=""){
             $this->db->where('lead_next_calling_date >= "'.$next_calling.'"');
