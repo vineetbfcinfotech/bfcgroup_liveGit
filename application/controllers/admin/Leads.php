@@ -11375,6 +11375,8 @@ echo $myJSON;
           $this->session->unset_userdata('start_date');
        $this->session->unset_userdata('end_date');
        $this->session->unset_userdata('staff_name');
+       $this->session->unset_userdata('manu_script');
+       $this->session->unset_userdata('next_calling');
      //$this->session->set_userdata(array("search_global"=>''));
       redirect('admin/leads/assignedleads_array', 'refresh');
     }
@@ -11414,6 +11416,8 @@ echo $myJSON;
         $search_cat = "";
          $start_date = "";
           $end_date = "";
+          $next_calling = "";
+            $manu_script = "";
           if($this->input->post('submit_cat') != NULL ){
           $staff_name = $this->input->post('staff_name');
           $search_cat = $this->input->post('category_type');
@@ -11436,13 +11440,13 @@ echo $myJSON;
           }else{
           }
         }
-print_r($manu_script);
-print_r($next_calling);
+// print_r($manu_script);
+// print_r($next_calling);
         $useraid = $this->session->userdata('staff_user_id');
         $data['useraid'] = $useraid;
         $data['get_staff'] = $this->leads_model->get_pc();
         $data['get_task_type'] = $this->leads_model->get_pc_category();
-        $allcount = $this->leads_model->getrecordCount($search_text,$search_cat,$start_date,$end_date,$staff_name);
+        $allcount = $this->leads_model->getrecordCount($search_text,$search_cat,$start_date,$end_date,$staff_name,$manu_script,$next_calling);
         $this->load->library('pagination');
         $config = array();
         $config['base_url'] =  base_url() .'admin/leads/assignedleads_array/';
@@ -11469,13 +11473,15 @@ print_r($next_calling);
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $data["links"] = $this->pagination->create_links();
-        $data['leads'] =  $this->leads_model->leedsData($config["per_page"], $page ,$search_text,$search_cat,$start_date,$end_date,$staff_name);
+        $data['leads'] =  $this->leads_model->leedsData($config["per_page"], $page ,$search_text,$search_cat,$start_date,$end_date,$staff_name,$manu_script,$next_calling);
         $data['bodyclass'] = 'hide-sidebar';
          $data['search'] = $search_text;
          $data['search_cat'] = $search_cat;
          $data['start_date'] = $start_date;
          $data['end_date'] = $end_date;
          $data['staff_name'] = $staff_name;
+         $data['next_calling'] = $next_calling;
+         $data['manu_script'] = $manu_script;
         if(empty($this->uri->segment(4))){
              $curpage=$this->uri->segment(3); 
             // echo "test";

@@ -5895,7 +5895,7 @@ function business_report1($start,$length)
         
         return $result[0]['allcount'];
     }
-    public function getrecordCount($search = '',$search_cat='',$start_date = '',$end_date='',$staff_name = '') {
+    public function getrecordCount($search = '',$search_cat='',$start_date = '',$end_date='',$staff_name = '',$manu_script='',$next_calling='') {
         $id = $this->session->userdata('staff_user_id');
         $role = get_imp_role();
         $arr = herapermission();
@@ -5911,7 +5911,13 @@ function business_report1($start,$length)
                 $this->db->where('assigned',$id);
             }
         }
-        
+        if($manu_script!=""){
+            $this->db->where('lead_author_msstatus',$manu_script);
+        }
+        $next_calling=(isset($next_calling) && trim($next_calling)!='')?date("Y-m-d",strtotime(trim($next_calling))):'';
+        if($next_calling!=""){
+            $this->db->where('STR_TO_DATE(`next_calling`, "%d/%m/%Y") >= "'.$next_calling.'"');
+        }
         if($search != ''){
            $this->db->like('lead_author_name', $search);
       $this->db->or_like('phonenumber', $search);
@@ -6070,7 +6076,7 @@ function business_report1($start,$length)
         // echo $this->db->last_query();die;
         return $query->result();
     }
-    public function leedsData($limit, $start,$search_text='',$search_cat='',$start_date = '',$end_date='', $staff_name = ''){
+    public function leedsData($limit, $start,$search_text='',$search_cat='',$start_date = '',$end_date='', $staff_name = '',$manu_script='',$next_calling=''){
         $useraid = $this->session->userdata('staff_user_id');
         // print_r($useraid);die;
         $role = get_imp_role();
@@ -6092,6 +6098,14 @@ function business_report1($start,$length)
         $this->db->order_by('lead_approve_current_date','ASC');
         
         $this->db->limit($limit, $start);
+        
+        if($manu_script!=""){
+            $this->db->where('lead_author_msstatus',$manu_script);
+        }
+        $next_calling=(isset($next_calling) && trim($next_calling)!='')?date("Y-m-d",strtotime(trim($next_calling))):'';
+        if($next_calling!=""){
+            $this->db->where('STR_TO_DATE(`next_calling`, "%d/%m/%Y") >= "'.$next_calling.'"');
+        }
       if($search_text != ''){
         $this->db->group_start();
         $this->db->like('lead_author_name', $search_text);

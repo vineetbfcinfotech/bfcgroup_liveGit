@@ -64,6 +64,15 @@
                         <input type="text" id="end_date" autocomplete="false" value="<?= $end_date;?>" name="end_date"
                            placeholder="To Date" class="form-control datepicker custom_lead_filter"/>
                      </div>
+                     <div class="dropdown bootstrap-select show-tick">
+                        <input type="text" id="nextcalling_date" autocomplete="false" value="<?= $next_calling;?>" name="nextcalling_date"
+                           placeholder="Next Calling Date" class="form-control datepicker custom_lead_filter"/>
+                     </div>
+                     <select data-none-selected-text="Manuscript Status" name="manu_script" id="manu_script" data-live-search="true" class="selectpicker custom_lead_filter">
+                         <option value=""></option>
+                         <option value="in_process" <?php if($manu_script=='in_process'){ echo "selected"; } ?>>In Progress</option>
+                         <option value="completed" <?php if($manu_script=='completed'){ echo "selected"; } ?>>Completed</option>
+                     </select>
                      <input class="btn btn-primary" type='submit' name='submit_cat' value='Search'>
                   </form>
                </div>
