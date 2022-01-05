@@ -3584,6 +3584,10 @@ public function table()
         $status = $_POST['status'];
         $reassignlead = $_POST['reassignlead'];
         $next_calling = $_POST['nextcalling'];
+        $next_calling_date=(isset($next_calling) && trim($next_calling)!='')?date("Y-m-d",strtotime(trim($next_calling))):'';
+        // print_r($next_calling_date);
+        // exit();
+        // die();
         $reminder = $_POST['reminder'];
         $assigned = $_POST['assigned'];
         $book_format = $_POST['book_format'];
@@ -3694,12 +3698,12 @@ public function table()
         if($remark != null ) {
    
 
-        $data = array('lead_bookformat'=>$book_format,'lead_callingdate'=>$calling_date,'lead_publishedearlier'=>$PublishedEarlier,'lead_booktitle'=>$booktitle,'otherphonenumber'=>$otherphonenumber,'lead_author_name' => $name,'lead_author_name' => $name,  'phonenumber' => $phonenumber, 'email' => $email, 'designation' => $designation, 'company' => $company, 'address' => $address, 'data_source' => $data_source,  'calling_objective' => $calling_objective,  'meetingtimefrom' => $meetingtimefrom, 'meetingtimeto' => $meetingtimeto, 'next_calling' => $next_calling, 'status' => $status, 'lastcontact' => $date, 'assigned' => $assigned,'lead_category_id' => $categorisation,'lead_author_msstatus'=>$manuscriptStatus,'lead_author_mslanguage'=>$bookLanguage, 'ImEx_NextcallingDate' => $next_calling, 'ImEx_callingDate' => $calling_date, 'ImEx_CreatedAt' => $calling_date ,'lead_acquired_date'=> $date,'no_of_books'=>$no_of_books,'total_no_of_books'=>$no_of_books1,'lead_calling_date'=>$lead_calling_date);  
+        $data = array('lead_bookformat'=>$book_format,'lead_callingdate'=>$calling_date,'lead_publishedearlier'=>$PublishedEarlier,'lead_booktitle'=>$booktitle,'otherphonenumber'=>$otherphonenumber,'lead_author_name' => $name,'lead_author_name' => $name,  'phonenumber' => $phonenumber, 'email' => $email, 'designation' => $designation, 'company' => $company, 'address' => $address, 'data_source' => $data_source,  'calling_objective' => $calling_objective,  'meetingtimefrom' => $meetingtimefrom, 'meetingtimeto' => $meetingtimeto, 'next_calling' => $next_calling, 'lead_next_calling_date' => $next_calling_date, 'status' => $status, 'lastcontact' => $date, 'assigned' => $assigned,'lead_category_id' => $categorisation,'lead_author_msstatus'=>$manuscriptStatus,'lead_author_mslanguage'=>$bookLanguage, 'ImEx_NextcallingDate' => $next_calling, 'ImEx_callingDate' => $calling_date, 'ImEx_CreatedAt' => $calling_date ,'lead_acquired_date'=> $date,'no_of_books'=>$no_of_books,'total_no_of_books'=>$no_of_books1,'lead_calling_date'=>$lead_calling_date);  
         }
         else
         {
           
-        $data = array('lead_bookformat'=>$book_format,'lead_callingdate'=>$calling_date,'lead_publishedearlier'=>$PublishedEarlier,'lead_booktitle'=>$booktitle,'otherphonenumber'=>$otherphonenumber,'lead_author_name' => $name,'lead_author_name' => $name, 'status' => $status, 'phonenumber' => $phonenumber, 'email' => $email, 'designation' => $designation, 'company' => $company, 'address' => $address, 'data_source' => $data_source, 'calling_objective' => $calling_objective, 'meetingtimefrom' => $meetingtimefrom, 'meetingtimeto' => $meetingtimeto, 'next_calling' => $next_calling,  'status' => $status, 'lastcontact' => $date, 'assigned' => $assigned,'lead_category_id' => $categorisation,'lead_author_msstatus'=>$manuscriptStatus,'lead_author_mslanguage'=>$bookLanguage, 'ImEx_NextcallingDate' => $next_calling, 'ImEx_callingDate' => $calling_date, 'ImEx_CreatedAt' => $calling_date, 'lead_acquired_date'=> $date,'no_of_books'=>$no_of_books,'total_no_of_books'=>$no_of_books1,'lead_calling_date'=>$lead_calling_date);
+        $data = array('lead_bookformat'=>$book_format,'lead_callingdate'=>$calling_date,'lead_publishedearlier'=>$PublishedEarlier,'lead_booktitle'=>$booktitle,'otherphonenumber'=>$otherphonenumber,'lead_author_name' => $name,'lead_author_name' => $name, 'status' => $status, 'phonenumber' => $phonenumber, 'email' => $email, 'designation' => $designation, 'company' => $company, 'address' => $address, 'data_source' => $data_source, 'calling_objective' => $calling_objective, 'meetingtimefrom' => $meetingtimefrom, 'meetingtimeto' => $meetingtimeto, 'next_calling' => $next_calling, 'lead_next_calling_date' => $next_calling_date,  'status' => $status, 'lastcontact' => $date, 'assigned' => $assigned,'lead_category_id' => $categorisation,'lead_author_msstatus'=>$manuscriptStatus,'lead_author_mslanguage'=>$bookLanguage, 'ImEx_NextcallingDate' => $next_calling, 'ImEx_callingDate' => $calling_date, 'ImEx_CreatedAt' => $calling_date, 'lead_acquired_date'=> $date,'no_of_books'=>$no_of_books,'total_no_of_books'=>$no_of_books1,'lead_calling_date'=>$lead_calling_date);
         }
         
        // print_r($data);exit;
@@ -11377,6 +11381,7 @@ echo $myJSON;
        $this->session->unset_userdata('staff_name');
        $this->session->unset_userdata('manu_script');
        $this->session->unset_userdata('next_calling');
+       $this->session->unset_userdata('next_calling_to');
      //$this->session->set_userdata(array("search_global"=>''));
       redirect('admin/leads/assignedleads_array', 'refresh');
     }
@@ -11417,6 +11422,7 @@ echo $myJSON;
          $start_date = "";
           $end_date = "";
           $next_calling = "";
+          $next_calling_to = "";
             $manu_script = "";
           if($this->input->post('submit_cat') != NULL ){
           $staff_name = $this->input->post('staff_name');
@@ -11427,8 +11433,9 @@ echo $myJSON;
           $end_date = $this->input->post('end_date');
           $this->session->set_userdata(array("start_date"=>$start_date,"end_date"=>$end_date));
           $next_calling = $this->input->post('nextcalling_date');
+          $next_calling_to = $this->input->post('nextcalling_to_date');
           $manu_script = $this->input->post('manu_script');
-          $this->session->set_userdata(array("next_calling"=>$next_calling,"manu_script"=>$manu_script));
+          $this->session->set_userdata(array("next_calling"=>$next_calling,"next_calling_to"=>$next_calling_to,"manu_script"=>$manu_script));
         }else{
           if(($this->session->userdata('category_type') != NULL) ||  ($this->session->userdata('staff_name') != NULL) || ($this->session->userdata('start_date') != NULL) || ($this->session->userdata('manu_script') != NULL) || ($this->session->userdata('next_calling') != NULL) ){
             $staff_name = $this->session->userdata('staff_name');
@@ -11436,6 +11443,7 @@ echo $myJSON;
               $start_date = $this->session->userdata('start_date');
             $end_date = $this->session->userdata('end_date');
             $next_calling = $this->session->userdata('next_calling');
+            $next_calling_to = $this->session->userdata('next_calling_to');
             $manu_script = $this->session->userdata('manu_script');
           }else{
           }
@@ -11446,7 +11454,7 @@ echo $myJSON;
         $data['useraid'] = $useraid;
         $data['get_staff'] = $this->leads_model->get_pc();
         $data['get_task_type'] = $this->leads_model->get_pc_category();
-        $allcount = $this->leads_model->getrecordCount($search_text,$search_cat,$start_date,$end_date,$staff_name,$manu_script,$next_calling);
+        $allcount = $this->leads_model->getrecordCount($search_text,$search_cat,$start_date,$end_date,$staff_name,$manu_script,$next_calling,$next_calling_to);
         $this->load->library('pagination');
         $config = array();
         $config['base_url'] =  base_url() .'admin/leads/assignedleads_array/';
@@ -11473,7 +11481,7 @@ echo $myJSON;
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $data["links"] = $this->pagination->create_links();
-        $data['leads'] =  $this->leads_model->leedsData($config["per_page"], $page ,$search_text,$search_cat,$start_date,$end_date,$staff_name,$manu_script,$next_calling);
+        $data['leads'] =  $this->leads_model->leedsData($config["per_page"], $page ,$search_text,$search_cat,$start_date,$end_date,$staff_name,$manu_script,$next_calling,$next_calling_to);
         $data['bodyclass'] = 'hide-sidebar';
          $data['search'] = $search_text;
          $data['search_cat'] = $search_cat;
@@ -11481,6 +11489,7 @@ echo $myJSON;
          $data['end_date'] = $end_date;
          $data['staff_name'] = $staff_name;
          $data['next_calling'] = $next_calling;
+         $data['next_calling_to'] = $next_calling_to;
          $data['manu_script'] = $manu_script;
         if(empty($this->uri->segment(4))){
              $curpage=$this->uri->segment(3); 

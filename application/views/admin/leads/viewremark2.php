@@ -197,11 +197,7 @@ session_start();
                     <?php 
                     if( (isset($compare_id)) && ($compare_id->id !='')) { ?>
                         <div class="col-md-6">
-<<<<<<< HEAD
-                            <div class="form-group" app-field-wrapper="package_cost">
-=======
                             <div class="form-group" id="sel_pack_div" app-field-wrapper="package_cost">
->>>>>>> 2347ed0e6789b2fe1b22d6fb2785d0b571548b11
                                 <span class="text-danger display-block"><?php if($all_lead_data->package_swap==1){echo 'Package interchanged!'; } ?></span>
                                 <label for="select_package" class="control-label">Select Package</label>
                                 <select name="select_package" id="package_sel" <?php if($lead_status ==1 || $lead_status==2 || $lead_status==3 ){ echo "disabled"; }?> <?php if($all_lead_data->package_swap==1){echo "disabled"; } ?>>
@@ -390,11 +386,6 @@ session_start();
                     method:'POST',
                     data:data,
                     success: function(data){
-<<<<<<< HEAD
-                        console.log('got data from swap: '+data);
-                        if(data==1){
-                            location.reload();
-=======
                         var responce = JSON.parse(data);
                         // var resdata = JSON.parse(responce.data)
                         // console.log('got data from swap: '+responce.data.gross_amt+' xyz');
@@ -422,7 +413,6 @@ session_start();
                             msg = '<span class="text-danger display-block">Package interchanged!</span>';
                             $('#sel_pack_div').prepend(msg);
                             // location.reload();
->>>>>>> 2347ed0e6789b2fe1b22d6fb2785d0b571548b11
                         }
                     }
                 });
@@ -671,7 +661,7 @@ session_start();
                                 /*window.load();
                                 alert_float('success', 'Lead Updated Successfully');
                                 alert("test");*/
-                                location.reload();
+                                // location.reload();
                             }
                         });
                         

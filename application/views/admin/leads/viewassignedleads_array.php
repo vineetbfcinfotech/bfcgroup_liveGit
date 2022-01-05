@@ -66,7 +66,11 @@
                      </div>
                      <div class="dropdown bootstrap-select show-tick">
                         <input type="text" id="nextcalling_date" autocomplete="false" value="<?= $next_calling;?>" name="nextcalling_date"
-                           placeholder="Next Calling Date" class="form-control datepicker custom_lead_filter"/>
+                           placeholder="Next Calling From Date" class="form-control datepicker custom_lead_filter"/>
+                     </div>
+                     <div class="dropdown bootstrap-select show-tick">
+                        <input type="text" id="nextcalling_to_date" autocomplete="false" value="<?= $next_calling_to;?>" name="nextcalling_to_date"
+                           placeholder="Next Calling To Date" class="form-control datepicker custom_lead_filter"/>
                      </div>
                      <select data-none-selected-text="Manuscript Status" name="manu_script" id="manu_script" data-live-search="true" class="selectpicker custom_lead_filter">
                          <option value=""></option>
