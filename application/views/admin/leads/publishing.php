@@ -3365,7 +3365,6 @@ $(document).on('change', '#book_cover_sc', function() {
                         package_value_for_cs = package_value_for_c + val_of_colorrr;
                     } else {
                         package_value_for_cs = package_value_for_c + val_of_color;
-
                     }
                 } else {
                     val_of_color = no_of_pages * 7;
@@ -3650,8 +3649,8 @@ $(document).on('change', '#book_cover_sc', function() {
                         } else {
                             val_of_color = val_of_color * parseInt($("#number_of_complimentary_copies").val())
                         }
-                        alert(val_of_colorrr+'val_of_colorrr');
-                        alert(val_of_color+'val_of_color');
+                        // alert(val_of_colorrr+'val_of_colorrr');
+                        // alert(val_of_color+'val_of_color');
 
                     } else {
                         val_of_color = no_of_pages * 7;
@@ -3740,7 +3739,7 @@ $(document).on('change', '#book_cover_sc', function() {
                 document.getElementById("prec_200").innerHTML = '₹ ' + Math.round(discount_20_) + '';
             }
         }
-        alert(multi_create_pack);
+        // alert(multi_create_pack);
     } else {
         //here start the create code for multicolor_code
         var book_format = $(this).val();

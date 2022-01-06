@@ -66,7 +66,7 @@
                                         <label for="msstatus" class="control-label">Manuscript Status</label>
                                         <select id="msstatus" name="msstatus" class="form-control" tabindex="-98">
                                             <option selected="" value="">Select Manuscript Status</option>
-                                            <option value="inprocess" <?php if ($leadData->lead_author_msstatus == 'inprocess') {
+                                            <option value="in_process" <?php if ($leadData->lead_author_msstatus == 'in_process') {
                                                                             echo "selected";
                                                                         } ?>>In-process</option>
                                             <option value="completed" <?php if ($leadData->lead_author_msstatus == 'completed') {
@@ -821,7 +821,7 @@
         </div>
     </div>
     <?php init_tail(); ?>
-    <? php // echo json_encode($packageData->services);exit; 
+    <?php // echo json_encode($packageData->services);exit; 
     ?>
      <script>
         $(window).load(function() {
@@ -2077,7 +2077,6 @@ function myFunctiondataedit(f_id, f_cost ,s_id, s_cost,f_change_cost,s_change_co
         $('#myCheck'+hindi_english_id).attr('onclick','myFunction('+hindi_english_id+','+hindi_english_total_c+')');
         $('.hindi_english_translation').val(hindi_english_total_c);
 
-
         var hindi_typing_id = $('.hindi_typing').attr("data-id");
         var hindi_typing_cost = $('#myCheck'+hindi_typing_id).attr("data-cost");
         var hindi_h_total_c = value*hindi_typing_cost;
@@ -2098,7 +2097,6 @@ function myFunctiondataedit(f_id, f_cost ,s_id, s_cost,f_change_cost,s_change_co
         $('#myCheck'+urdu_typing_id).attr('onclick','myFunction('+urdu_typing_id+','+urdu_h_total_c+')');
         $('#myCheck'+urdu_typing_id).attr('data-price',urdu_h_total_c);
         $('.urdu_typing').val(urdu_h_total_c);
-        
         }else{
               alert_float('warning', 'Number of pages should be more than 49');
         }
@@ -2715,11 +2713,13 @@ $(document).on('change', '#book_cover_sc', function() {
     }
     package_details = '';
     package_details = '<?php echo $leadData->lead_package_detail; ?>';
+    //Code changed on 4 jun 2022 for edit standard customize
     var package_value_for_c = parseInt($("#lead_ori_packge_value").val());
     if (package_details == '3') {
         var lead_package_name = '<?php echo $leadData->lead_package_name; ?>';
         var current_package_name = $("#package_value_sc").val();
-        if (lead_package_name == current_package_name) {
+        current_package_name1 =current_package_name+'test';
+        if (lead_package_name == current_package_name1) {
             var package_value_for_edit = parseInt($("#lead_ori_packge_value").val());
             var book_format = $(this).val();
             var no_of_pages = parseInt($("#number_of_pages_for_sc").val());
@@ -3313,10 +3313,11 @@ $(document).on('change', '#book_cover_sc', function() {
                 //               var cost_total2 =  additional_author_copy*30;
                 //               var cost_total = cost_total1+cost_total2;
                 //      $("#cost_of_additional").val(Math.round(cost_total));
-                var package_value_for_cs = package_value_for_c
+                var package_value_for_cs = package_value_for_c;
                 var val_of_colorrr = 0;
                 if ($('.color_pages').is(":checked")) {
-                    var number_of_color = $("#color_pages_number").val();
+               //Code changed on 4 jun 2022 for edit standard customize
+                    var number_of_color = parseInt($("#color_pages_number").val());
                     var total_color_par = no_of_pages * 0.30;
                     if (number_of_color <= total_color_par) {
                         val_of_color = number_of_color * 7;
@@ -4488,6 +4489,7 @@ $(document).on('keyup', '#color_pages_number', function() {
 
           if(hasDisabledAttr === true){
             alert('Please Select Book Specifications');
+            $('#book_cover_sc').focus();
             return false;
           }else{
           
