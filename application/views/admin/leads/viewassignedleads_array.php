@@ -135,6 +135,7 @@
                            <tr>
                               <th class="bold" style="backgroud-color:red !important"><b>Sr. No.</b></th>
                               <th class="bold"><b>-</b></th>
+                              <th class="bold"><b>Set Priority</b></th>
                               <th class="bold"><b>Create Package</b></th>
                               <th class="bold"><b>Create Other Package</b></th>
                               <?php if ((is_admin())||($_SESSION['staff_user_id'] == 34) ||($_SESSION['staff_user_id'] == 28)  || $role ==92 ) { ?>
@@ -180,7 +181,7 @@
                                   $cat ="";
                               
                               } ?>  
-                           <tr id="rowData<?php echo $r->id; ?>" >
+                           <tr id="rowData<?php echo $r->id; ?>">
                               <td><?php echo $i; ?></td>
                               <?php if(($r->lead_category_id == 5 || $r->lead_category_id == 16 || $r->lead_category_id == 38 || $r->lead_category_id == 30) && ($r->craete_package != 1)){
                                  $r->create_p = '<a href="'.admin_url('leads/publishing/').$r->id.'" target="_blank" >create package</a>'; 
@@ -231,7 +232,14 @@
                                     data-assigned="<?= $r->assigned; ?>"
                                     data-next_calling="<?= $r->next_calling; ?>"
                                     data-status=""
-                                    data-description="" > </a> 
+                                    data-description="" > </a>
+                              </td>
+                              <td>
+                                 <select name="priority" class="priority_sel selectpicker " data-id="<?= $r->id; ?>"  style="width: auto;">
+                                    <option value=""></option>
+                                    <option value="0" <?php if($r->priority=="0"){echo 'selected'; } ?> >P 1</option>
+                                    <option value="1" <?php if($r->priority=="1"){echo 'selected'; } ?> >P 2</option>
+                                 </select>
                               </td>
                               <td><?php echo $r->create_p; ?></td>
                               <td><?php echo $r->create_other_p; ?></td>
@@ -1187,6 +1195,28 @@
    
    }
    $('#example33').dataTable({searching: false, paging: false, info: false});
+</script>
+<script>
+   $(document).ready(function(){
+      $('.priority_sel').change(function(){
+         var id = $(this).attr("data-id");
+         var val= $(this).val();
+         $.ajax({
+            type: "POST",
+            url: "<?php echo admin_url('Leads/update_priority'); ?>",
+            data: {'id': id,'priority':val}, // <--- THIS IS THE CHANGE 
+            success: function(data){
+               console.log(data);
+               if(data=="pass"){
+                  alert('Sucess');
+                  location.reload();
+               }else{
+                  alert("Something Went Wrong");
+               }
+            }
+         })
+      });
+   });
 </script>
 </body>
 </html>

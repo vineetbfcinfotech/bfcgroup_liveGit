@@ -12781,4 +12781,16 @@ public function reffer_lead_check()
 
         // echo "test";
     }
+    public function update_priority(){
+        // echo "pass";
+        $id = $this->input->post("id");
+        $priority = $this->input->post("priority");
+        $this->db->where('id', $id);
+        $query = $this->db->update('tblleads', array('priority'=>$priority));
+        if($query == 1){
+            echo "pass";
+        }else{
+            echo "fail";
+        }
+    }
 }

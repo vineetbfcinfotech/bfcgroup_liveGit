@@ -6089,7 +6089,7 @@ function business_report1($start,$length)
         $arr = herapermission();
         $arr = explode(',', $arr);
         $this->load->database();
-        $this->db->select('id,lead_author_name,phonenumber,	lead_adname,lead_author_msstatus,lead_publishedearlier,email,lead_author_mslanguage,lead_callingdate,lead_category_id,description,ImEx_NextcallingDate,lead_created_date,lead_bookformat,lead_booktitle,otherphonenumber,craete_package,create_other_package,assigned');
+        $this->db->select('id,priority,lead_author_name,phonenumber,	lead_adname,lead_author_msstatus,lead_publishedearlier,email,lead_author_mslanguage,lead_callingdate,lead_category_id,description,ImEx_NextcallingDate,lead_created_date,lead_bookformat,lead_booktitle,otherphonenumber,craete_package,create_other_package,assigned');
         if (!(is_admin())) {
             if ($useraid == 34 || $useraid == 28) {
            
@@ -6100,7 +6100,7 @@ function business_report1($start,$length)
             }
          
         }
-        
+        $this->db->order_by('priority','ASC');
         $this->db->order_by('lead_approve_current_date','ASC');
         
         $this->db->limit($limit, $start);
