@@ -13,6 +13,17 @@
             </div>
             <div class="row">
                <div class="col-md-2">
+                  
+<button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+alert(window.history.go(-2));
+  document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
                   <a href="JavaScript:Void(0);" onclick="goBack()"  class="btn btn-primary "
                      onclick="">
                   Back</a>

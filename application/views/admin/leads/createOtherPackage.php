@@ -904,7 +904,7 @@
                 var lamination_sc = '<?= $leadData->lamination_sc; ?>';
                 var book_cover_sc = '<?= $leadData->book_cover_sc; ?>';
                 var complimentry_copies = '<?= $leadData->complimentry_copies; ?>';
-                var additional_author_copies_number = '<?= $leadData->last_lead_status; ?>';
+                var additional_author_copies_number = '<?= $leadData->additional_author_copy; ?>';
                 <?php if (isset($leadData->cost_of_additional_copy) && ($leadData->cost_of_additional_copy != '') ) {?>
                    additional_gross_amount = '<?= $leadData->cost_of_additional_copy; ?>';
                 <?php }else{ ?>

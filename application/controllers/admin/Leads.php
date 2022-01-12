@@ -8996,10 +8996,11 @@ $servicess = implode(", ",  $filteredArray);
             // echo $url;die;
 
             set_alert('success', _l('Package has been updated successfully.'));
-            //redirect($_SERVER['HTTP_REFERER']);
+            // redirect($_SERVER['HTTP_REFERER']);
 //          redirect($url);
             //   echo ("<script LANGUAGE='JavaScript'> window.location.href='".$url."';
             //                 </script>");
+            echo ("<script>if(window.history.length >2){ window.history.go(-2);} </script>");
          redirect('admin/Leads/assignedleads_array');
         //}
     }
@@ -12237,6 +12238,7 @@ public function createOtherPackage(){
         $data['book_size_sc'] = $this->input->post('book_size_sc');
         $data['lamination_sc'] = $this->input->post('lamination_sc');
         $data['complimentry_copies'] = $number_of_complimentary_copies;
+        $data['additional_author_copy'] = $this->input->post('additional_author_copies_number');
         $data['number_of_pages'] = $this->input->post('number_of_pages_for_sc');
         $data['package_name'] = $this->input->post('package_name_data_value');
         $data['book_type'] = $this->input->post('book_type');
@@ -12365,6 +12367,7 @@ public function createOtherPackage(){
         'lead_service' => $servicess,
         'lead_sub_service' => implode(", ",$this->input->post('sub_services')),
         'complimentry_copies' => $number_of_complimentary_copies,
+        'additional_author_copy' => $this->input->post('additional_author_copies_number'),
         'book_cover_sc' => $this->input->post('book_cover_sc'),
         'paper_type_sc' => $this->input->post('paper_type_sc'),
         'book_size_sc' => $this->input->post('book_size_sc'),
@@ -12381,13 +12384,15 @@ public function createOtherPackage(){
         'create_p_offer'=> $this->input->post('create_p_offer'),
         );
     } 
+    // echo "<pre>";
     // print_r($data);
+    // die;
     // echo $authorId;die;
     $result = $this->leads_model->saveOtherCreatePackage($authorId, $data);
-    //echo "<pre>";
     //print_r($result);
     set_alert('success', _l('Package has been updated successfully.'));
     echo ("<script LANGUAGE='JavaScript'> window.location.href='".$url."';</script>");
+    redirect('admin/Leads/assignedleads_array');
     
 }
 public function createMuliplePackage(){
