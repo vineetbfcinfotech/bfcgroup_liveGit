@@ -42,7 +42,8 @@ class Pm_lead extends Admin_controller{
             $all_staff = $this->db->get_where('tblstaff',array('staffid' => $staff_id))->row();
             $leadId = end($this->uri->segment_array());
             $packageData = $this->leadsdata->getleadsData($leadId);
-            $to = $packageData->email;
+            // $to = $packageData->email;
+            $to = 'vineet.bfcinfotech@gmail.com';
             $this->load->library('phpmailer_lib');
             $mail = $this->phpmailer_lib->load();
             $mail->IsSMTP();
@@ -206,7 +207,8 @@ class Pm_lead extends Admin_controller{
          file_put_contents($filepath, $output);
        
          $file = base_url('assets/asf_agreementMail/'.$filename); 
-         $to = $all_lead_data->email;
+        //  $to = $all_lead_data->email;
+         $to = 'vineet.bfcinfotech@gmail.com';
         //    $to = 'mayankmishrabfcinfotech@gmail.com';
          $subject = 'Agreement';
          $message = "<p>Hi <b>".$name."</b>,</p>";

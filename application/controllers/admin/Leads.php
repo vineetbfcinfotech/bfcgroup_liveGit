@@ -10373,8 +10373,8 @@ $servicess = implode(", ",  $filteredArray);
         // print_r($staff_id);exit;
 
     
-        $to = $packageData->email;
-    //   $to = 'mayankmishrabfcinfotech@gmail.com';
+        // $to = $packageData->email;
+      $to = 'vineet.bfcinfotech@gmail.com';
         $subject = 'BFC Publications Package Details';
         $message = "<p>Dear Mr./Miss. <b>".$packageData->lead_author_name."</b>,</p>";
        
@@ -10530,6 +10530,7 @@ $servicess = implode(", ",  $filteredArray);
         $mail->addcc('projectcoodinator.bfcpub@gmail.com', '');
         $mail->addcc('shivangiyadav@bfcpublications.com', '');
         $mail->addcc('gaurav@bfcpublications.com', '');
+        /*
         if ($staff_id == 54) {
             $mail->addcc('chitrapal@bfcpublications.com', '');
         }else if ($staff_id == 91) {
@@ -10559,6 +10560,7 @@ $servicess = implode(", ",  $filteredArray);
             $mail->addcc('priyabajpayee@bfcpublications.com', ''); 
 
         }else{}
+        */
         $mail->addAttachment($file); 
            
         $mail->Subject = $subject;
@@ -10633,8 +10635,8 @@ $servicess = implode(", ",  $filteredArray);
         //echo "<pre>";
         // print_r($staff_id);exit;
 
-        // $to = 'mayankmishrabfcinfotech@gmail.com';
-        $to = $packageData->email;
+        $to = 'vineet.bfcinfotech@gmail.com';
+        // $to = $packageData->email;
 
         $subject = 'BFC Publications Package Details';
         $message = "<p>Dear Mr. <b>".$packageData->lead_author_name."</b>,</p>";
@@ -10814,6 +10816,7 @@ $servicess = implode(", ",  $filteredArray);
         //     $mail->addcc('priyabajpayee@bfcpublications.com', ''); 
 
         // }else{}
+        /*
         if ($staff_id == 54) {
             $mail->addcc('chitrapal@bfcpublications.com', '');
         }else if ($staff_id == 91) {
@@ -10843,6 +10846,7 @@ $servicess = implode(", ",  $filteredArray);
             $mail->addcc('priyabajpayee@bfcpublications.com', ''); 
 
         }else{}
+        */
         $mail->addAttachment($file); 
            
         $mail->Subject = $subject;

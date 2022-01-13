@@ -63,9 +63,15 @@ if (is_admin() || is_headtrm()) {
 		$this->db->from('tblstaff');
 		$this->db->join('tblleads', 'tblleads.assigned = tblstaff.staffid');
 		 $this->db->where(array('tblleads.pm_project_status' => '1' ));
+		$query1 = $this->db->get()->result();
 		
-		$query = $this->db->get();
-		return $query->result();
+		$this->db->select('*');
+		$this->db->from('tblstaff');
+		$this->db->join('tblleads_create_package', 'tblleads_create_package.assigned = tblstaff.staffid');
+		 $this->db->where(array('tblleads_create_package.pm_project_status' => '1' ));
+		
+		$query2 = $this->db->get()->result();
+		return array_merge($query1,$query2);
 }else{
 		$this->db->select('*');
 		$this->db->from('tblstaff');
@@ -74,12 +80,17 @@ if (is_admin() || is_headtrm()) {
 		$this->db->where("DATE_FORMAT(tblleads.lead_booking_amount_date,'%Y-%m-%d') >= DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ");
 		 $this->db->order_by('tblleads.lead_booking_amount_date','DESC');
 		 $query1 = $this->db->get()->result();
-		//   echo $this->db->last_query();
+		//   echo $this->db->last_query();	
 		 $query2 = $this->db->query("SELECT * FROM `tblstaff` JOIN `tblleads` ON `tblleads`.`assigned` = `tblstaff`.`staffid` WHERE `tblstaff`.`pre_pm_assign_to` = '".$pm_id."' AND `tblleads`.`pm_project_status` = '1' AND DATE_FORMAT(tblleads.lead_booking_amount_date,'%Y-%m-%d') < DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ORDER BY `tblleads`.`lead_booking_amount_date` DESC;")->result();
-		 $query = array_merge($query1,$query2);
+
+		 $query3 = $this->db->query("SELECT * FROM `tblstaff` JOIN `tblleads_create_package` ON `tblleads_create_package`.`assigned` = `tblstaff`.`staffid` WHERE `tblstaff`.`pre_pm_assign_to` = '".$pm_id."' AND `tblleads_create_package`.`pm_project_status` = '1' AND DATE_FORMAT(tblleads_create_package.lead_booking_amount_date,'%Y-%m-%d') >= DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ORDER BY `tblleads_create_package`.`lead_booking_amount_date` DESC;")->result();
+		 $query4 = $this->db->query("SELECT * FROM `tblstaff` JOIN `tblleads_create_package` ON `tblleads_create_package`.`assigned` = `tblstaff`.`staffid` WHERE `tblstaff`.`pre_pm_assign_to` = '".$pm_id."' AND `tblleads_create_package`.`pm_project_status` = '1' AND DATE_FORMAT(tblleads_create_package.lead_booking_amount_date,'%Y-%m-%d') < DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ORDER BY `tblleads_create_package`.`lead_booking_amount_date` DESC;")->result();
+		 $query = array_merge($query1,$query2,$query3,$query4);
 		
 		//  echo "<pre>";
-		//  print_r($query);exit;
+		//  print_r($query2);
+		//  echo "</pre>";
+		//  exit;
 		//  die();
 		return $query;
 }
@@ -113,16 +124,30 @@ if (is_admin() || is_headtrm()) {
 		$this->db->join('tblleads', 'tblleads.assigned = tblstaff.staffid');
 		 $this->db->where(array('tblleads.pm_project_status' => '2'));
 		 $this->db->order_by('tblleads.lead_pm_takeup_date','DESC');
-		$query = $this->db->get();
-		return $query->result();
+		 $query1 = $this->db->get()->result();
+		
+		$this->db->select('*');
+		$this->db->from('tblstaff');
+		$this->db->join('tblleads_create_package', 'tblleads_create_package.assigned = tblstaff.staffid');
+		 $this->db->where(array('tblleads_create_package.pm_project_status' => '2' ));
+		
+		$query2 = $this->db->get()->result();
+		return array_merge($query1,$query2);
 }else{
 		$this->db->select('*');
 		$this->db->from('tblstaff');
 		$this->db->join('tblleads', 'tblleads.assigned = tblstaff.staffid');
 		 $this->db->where(array('tblstaff.pm_assign_to' => $pm_id, 'tblleads.pm_project_status' => '2'));
+		 $this->db->where("DATE_FORMAT(tblleads.lead_booking_amount_date,'%Y-%m-%d') >= DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ");
 		 $this->db->order_by('tblleads.lead_pm_takeup_date','DESC');
-		$query = $this->db->get();
-		return $query->result();
+		$query1 = $this->db->get()->result();
+
+		$query2 = $this->db->query("SELECT * FROM `tblstaff` JOIN `tblleads` ON `tblleads`.`assigned` = `tblstaff`.`staffid` WHERE `tblstaff`.`pre_pm_assign_to` = '".$pm_id."' AND `tblleads`.`pm_project_status` = '2' AND DATE_FORMAT(tblleads.lead_booking_amount_date,'%Y-%m-%d') < DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ORDER BY `tblleads`.`lead_pm_takeup_date` DESC;")->result();
+
+		$query3 = $this->db->query("SELECT * FROM `tblstaff` JOIN `tblleads_create_package` ON `tblleads_create_package`.`assigned` = `tblstaff`.`staffid` WHERE `tblstaff`.`pre_pm_assign_to` = '".$pm_id."' AND `tblleads_create_package`.`pm_project_status` = '2' AND DATE_FORMAT(tblleads_create_package.lead_booking_amount_date,'%Y-%m-%d') >= DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ORDER BY `tblleads_create_package`.`lead_pm_takeup_date` DESC;")->result();
+		$query4 = $this->db->query("SELECT * FROM `tblstaff` JOIN `tblleads_create_package` ON `tblleads_create_package`.`assigned` = `tblstaff`.`staffid` WHERE `tblstaff`.`pre_pm_assign_to` = '".$pm_id."' AND `tblleads_create_package`.`pm_project_status` = '2' AND DATE_FORMAT(tblleads_create_package.lead_booking_amount_date,'%Y-%m-%d') < DATE_FORMAT(tblstaff.pm_assign_date,'%Y-%m-%d') ORDER BY `tblleads_create_package`.`lead_pm_takeup_date` DESC;")->result();
+		$query = array_merge($query1,$query2,$query3,$query4);
+		return $query;
 }
 	
 
