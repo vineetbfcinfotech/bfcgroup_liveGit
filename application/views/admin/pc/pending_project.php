@@ -125,7 +125,7 @@
   </td>
   <td>
    <?php if ($value->final_mail_agreement_upload) { ?>
-     <a class="btn btn-success btn-xs take_up_data"  data-id="<?= $value->id; ?>"   >
+     <a class="btn btn-success btn-xs take_up_data"  data-id="<?= $value->id; ?>" data-tbl="<?= $value->tbltype; ?>" >
        Take Up
      </a>
      
@@ -387,7 +387,7 @@
           <div class="col-md-6"></div>
           <div class="col-md-6">
            
-            <a class="btn btn-success btn-xs " href="<?= admin_url('pm_lead/sendmail/'.$value->id);?>">Send Mail</a>
+            <a class="btn btn-success btn-xs " href="<?= admin_url('pm_lead/sendmail/'.$value->id.'/'.$value->tbltype);?>">Send Mail</a>
           </div>
         </div>
         
@@ -463,12 +463,14 @@
   $(".take_up_data").click(function() {
     
    var id = $(this).attr("data-id");
+   var tbl = $(this).attr("data-tbl");
    $.ajax({
     
      url: "<?php echo base_url(); ?>admin/Pm_lead/take_up",
      method: 'POST',
      data: {
       id: id,
+      tbl:tbl
     },
               success: function (data) // A function to be called if request succeeds
               {

@@ -37,11 +37,21 @@ class Pm_lead extends Admin_controller{
             $this->load->view('admin/pc/approved_project', $data);
         }
         //asf mail send function
-        public function sendmail(){
+        public function sendmail($leadid = '',$tbltype=""){
           $staff_id = $_SESSION['staff_user_id'];
             $all_staff = $this->db->get_where('tblstaff',array('staffid' => $staff_id))->row();
-            $leadId = end($this->uri->segment_array());
-            $packageData = $this->leadsdata->getleadsData($leadId);
+            // $leadId = end($this->uri->segment_array());
+            $leadId = $leadid;
+            // echo $tbltype; 
+            // die();
+            if($tbltype=='3'){
+                $packageData = $this->leadsdata->getmultiBookData($leadId);
+            }else{
+                $packageData = $this->leadsdata->getleadsData($leadId);
+            }
+            echo '<pre>';
+            // print_r($packageData);
+            // die();
             // $to = $packageData->email;
             $to = 'vineet.bfcinfotech@gmail.com';
             $this->load->library('phpmailer_lib');
@@ -76,8 +86,8 @@ class Pm_lead extends Admin_controller{
                 $message .="(M) +91 7307088330<br>";
                 $message .="Email: gaurav@bfcpublications.com <br>";
                 $message .="CP - 61| Viraj Khand | Gomti Nagar | Lucknow | 226010<br>";
-                $mail->Username   = 'gaurav@bfcpublications.com';
-                $mail->Password   = 'gaurav@2022';
+                $mail->Username   = 'vineet.bfcinfotech@gmail.com';
+                $mail->Password   = 'BFC@2021';
                 $mail->SetFrom('gaurav@bfcpublications.com', "BFC Publications");
                 
             }else if ($staff_id == 61) {
@@ -102,15 +112,15 @@ class Pm_lead extends Admin_controller{
             $mail->SMTPAuth   = TRUE;
             $mail->SMTPSecure = "ssl";
             $mail->Port       = 465;
-            $mail->Host       = "smtp.rediffmailpro.com";
+            $mail->Host       = "smtp.gmail.com";
             
             $mail->IsHTML(true);
             $mail->AddAddress($to, '');
-            $mail->addcc('gaurav@bfcpublications.com', '');
-            $mail->addcc('projectcoodinator.bfcpub@gmail.com', '');
-            if ($staff_id == 82) {
-                $mail->addcc('shivangiyadav@bfcpublications.com', '');
-            }
+            // $mail->addcc('gaurav@bfcpublications.com', '');
+            // $mail->addcc('projectcoodinator.bfcpub@gmail.com', '');
+            // if ($staff_id == 82) {
+            //     $mail->addcc('shivangiyadav@bfcpublications.com', '');
+            // }
             // $mail->addAttachment($file); 
                
             $mail->Subject = $subject;
@@ -145,7 +155,11 @@ class Pm_lead extends Admin_controller{
                   'asf_send_date' => date("Y-m-d")
                 );
                 $this->db->where('id', $leadId);
-              $this->db->update('tblleads', $data_array);
+                if($tbltype=='3'){
+                    $this->db->update('tblleads_create_package', $data_array);
+                }else{
+                    $this->db->update('tblleads', $data_array);
+                }
               //echo $this->db->last_query();exit;  
 
                 set_alert('success', _l('Mail sent successfully...'));
@@ -265,11 +279,11 @@ class Pm_lead extends Admin_controller{
          $mail->IsHTML(true);
          $mail->AddAddress($to, '');
          //$mail->addcc('rajeshguptabfcinfotech@gmail.com', '');
-         $mail->addcc('gaurav@bfcpublications.com', '');
-         $mail->addcc('projectcoodinator.bfcpub@gmail.com', '');
-         if ($staff_id == 82) {
-             $mail->addcc('shivangiyadav@bfcpublications.com', '');
-         }else{}
+        //  $mail->addcc('gaurav@bfcpublications.com', '');
+        //  $mail->addcc('projectcoodinator.bfcpub@gmail.com', '');
+        //  if ($staff_id == 82) {
+        //      $mail->addcc('shivangiyadav@bfcpublications.com', '');
+        //  }else{}
          
         //  $mail->addAttachment('https://bfcgroup.in/assets/asf_agreementMail/UjalaTripathi_bfc_agreement.pdf');
         //  $mail->addAttachment($file); 
@@ -1416,7 +1430,8 @@ class Pm_lead extends Admin_controller{
            $output = $dompdf->output();
            $filepath = 'assets/mrp_suggestion_pdf/'.$filename;
             file_put_contents($filepath, $output);
-         $to = $all_asf_data->email;
+        //  $to = $all_asf_data->email;
+        $to = "vineet.bfcinfoteh@gmail.com";
          $subject = 'MRP Suggestion';
          $message = "<p>Hi <b>".$name."</b>,</p>";
          // $message .= "<p>Thanks for short listing BFC as your publisher. It's great to finally have you on board."; 
@@ -1440,7 +1455,7 @@ class Pm_lead extends Admin_controller{
          $this->email->set_newline("\r\n");
          $this->email->from($all_staff->email, 'BFC Publications');
          $this->email->to($to);
-         $this->email->cc('projectcoodinator.bfcpub@gmail.com');  
+        //  $this->email->cc('projectcoodinator.bfcpub@gmail.com');  
          $this->email->subject($subject);
          $this->email->message($message);
          $this->email->attach($file);
