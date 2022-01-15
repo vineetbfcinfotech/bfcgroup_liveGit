@@ -112,8 +112,12 @@
                 </div>
 
                 <?php $email = $this->uri->segment(4);
-
+              if($tbltype=='3'){
+                $data_author = $this->db->get_where('tblleads_create_package',array('id'=>$lead_id))->row();
+                $data_lead = $this->db->get_where('chorus_asf',array('asf_email'=>$email,'lead_id'=>$data_author->leadid))->row();
+              }else{
                 $data_author = $this->db->get_where('tblleads',array('email'=>$email))->row();
+              }
 
                                   // print_r($data_author); ?>
 
@@ -148,8 +152,9 @@
 
                                           <label for="otherphonenumber" class="control-label">Author Name</label>
 
-                                          <input type="text" id="author_name" name="author_name" class="form-control" value="" autocomplete="no" required>
+                                          <input type="text" id="author_name" name="author_name" class="form-control" value="<?= $data_lead->asf_authorname; ?>" autocomplete="no" required>
 
+                                          <input type="hidden" id="tbltype" name="tbltype" class="form-control" value="<?=  $tbltype;?>" autocomplete="no">
                                           <input type="hidden" id="hidden_id" name="hidden_id" class="form-control" value="<?=  $data_author->id;?>" autocomplete="no">
 
                                           <input type="hidden" id="hidden_email" name="hidden_email" class="form-control" value="<?=  $data_author->email;?>" autocomplete="no">
@@ -164,7 +169,7 @@
 
                                         <label for="email" class="control-label">Father Name</label>
 
-                                        <input type="text" id="father_name" name="father_name" class="form-control" value="" required>
+                                        <input type="text" id="father_name" name="father_name" class="form-control" value="<?= $data_lead->asf_fathername; ?>" required>
 
                                       </div>
 
@@ -176,7 +181,7 @@
 
                                       <label for="email" class="control-label">Date of Birth</label>
 
-                                      <input type="date" id="dob" name="dob" class="form-control" value="" required>
+                                      <input type="date" id="dob" name="dob" class="form-control" value="<?= $data_lead->asf_dob; ?>" required>
 
                                     </div>
 
@@ -188,7 +193,7 @@
 
                                     <label for="email" class="control-label">Contact No</label>
 
-                                    <input type="text" id="contact_no" name="contact_no" class="form-control" value="" required>
+                                    <input type="text" id="contact_no" name="contact_no" class="form-control" value="<?= $data_lead->asf_contact; ?>" required>
 
                                   </div>
 
@@ -200,7 +205,7 @@
 
                                   <label for="email" class="control-label">Alternate contact no.</label>
 
-                                  <input type="text" id="alternate_no" name="alternate_no" class="form-control" value="">
+                                  <input type="text" id="alternate_no" name="alternate_no" class="form-control" value="<?= $data_lead->asf_altercontact; ?>">
 
                                 </div>
 
@@ -224,7 +229,7 @@
 
                               <label for="email" class="control-label">Nominee Name</label>
 
-                              <input type="text" id="nominee_name" name="nominee_name" class="form-control" value="">
+                              <input type="text" id="nominee_name" name="nominee_name" class="form-control" value="<?= $data_lead->asf_nomineename; ?>">
 
                             </div>
 
@@ -236,7 +241,7 @@
 
                             <label for="email" class="control-label">Correspondence  Address :</label>
 
-                            <input type="text" id="correspondence_address" name="correspondence_address" class="form-control" value="" required>
+                            <input type="text" id="correspondence_address" name="correspondence_address" class="form-control" value="<?= $data_lead->asf_address; ?>" required>
 
                           </div>
 
@@ -248,7 +253,7 @@
 
                           <label for="email" class="control-label">Landmark</label>
 
-                          <input type="text" id="landmark" name="landmark" class="form-control" value="" required>
+                          <input type="text" id="landmark" name="landmark" class="form-control" value="<?= $data_lead->asf_landmark; ?>" required>
 
                         </div>
 
@@ -260,7 +265,7 @@
 
                         <label for="email" class="control-label">City</label>
 
-                        <input type="text" id="city" name="city" class="form-control" value="" required>
+                        <input type="text" id="city" name="city" class="form-control" value="<?= $data_lead->asf_city; ?>" required>
 
                       </div>
 
@@ -272,7 +277,7 @@
 
                       <label for="email" class="control-label">State</label>
 
-                      <input type="text" id="state" name="state" class="form-control" value="" required>
+                      <input type="text" id="state" name="state" class="form-control" value="<?= $data_lead->asf_state; ?>" required>
 
                     </div>
 
@@ -284,7 +289,7 @@
 
                     <label for="Pin Code" class="control-label">Pin Code</label>
 
-                    <input type="number" id="pincode" name="pincode" class="form-control" value="" required>
+                    <input type="number" id="pincode" name="pincode" class="form-control" value="<?= $data_lead->asf_pincode; ?>" required>
 
                   </div>
 
@@ -296,7 +301,7 @@
 
                   <label for="Country" class="control-label">Country</label>
 
-                  <input type="text" id="country" name="country" class="form-control" value="" required>
+                  <input type="text" id="country" name="country" class="form-control" value="<?= $data_lead->asf_country; ?>" required>
 
                 </div>
 
@@ -314,7 +319,7 @@
 
                 <label for="email" class="control-label">Account  holder’s name</label>
 
-                <input type="text" id="account_holder_name" name="account_holder_name" class="form-control" value="" required>
+                <input type="text" id="account_holder_name" name="account_holder_name" class="form-control" value="<?= $data_lead->asf_accountholdername; ?>" required>
 
               </div>
 
@@ -326,7 +331,7 @@
 
               <label for="email" class="control-label">Account No.</label>
 
-              <input type="number" id="account_no" name="account_no" class="form-control" maxlength="16" value="" required>
+              <input type="number" id="account_no" name="account_no" class="form-control" maxlength="16" value="<?= $data_lead->asf_accountno; ?>" required>
 
             </div>
 
@@ -338,7 +343,7 @@
 
             <label for="email" class="control-label">Bank Name</label>
 
-            <input type="text" id="bank_name" name="bank_name" class="form-control" value="" required>
+            <input type="text" id="bank_name" name="bank_name" class="form-control" value="<?= $data_lead->asf_bankname; ?>" required>
 
           </div>
 
@@ -350,7 +355,7 @@
 
           <label for="email" class="control-label">Branch</label>
 
-          <input type="text" id="branch" name="branch" class="form-control" value="" required>
+          <input type="text" id="branch" name="branch" class="form-control" value="<?= $data_lead->asf_branch; ?>" required>
 
         </div>
 
@@ -362,7 +367,7 @@
 
         <label for="email" class="control-label">IFSC Code</label>
 
-        <input type="text" id="ifsc_code" name="ifsc_code" class="form-control" value="" required>
+        <input type="text" id="ifsc_code" name="ifsc_code" class="form-control" value="<?= $data_lead->asf_ifsc; ?>" required>
 
       </div>
 
@@ -374,7 +379,7 @@
 
       <label for="email" class="control-label">Pan No.</label>
 
-      <input type="text" id="pan_no" name="pan_no" class="form-control" value="" required>
+      <input type="text" id="pan_no" name="pan_no" class="form-control" value="<?= $data_lead->asf_panno; ?>" required>
 
     </div>
 

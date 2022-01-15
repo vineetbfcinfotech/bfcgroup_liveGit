@@ -378,7 +378,7 @@
              <p>Also, listed below is a hyperlink to the Author Submission Form (<a href="<?php echo base_url();?>admin/Asf_controller/index/<?php echo $value->email;?>">ASF</a>) that is to be filled at your end. This will help us learn more about you, your book, and most importantly your bank details wherein your royalty earnings shall be credited.</p>
              <p>Looking forward to hear from you.</p>
              <p>Happy Writing!</p>
-             To Fill ASF <a href="<?php echo base_url();?>admin/Asf_controller/index/<?php echo $value->email;?>">Click Here</a> 
+             To Fill ASF <a href="<?php echo base_url();?>admin/Asf_controller/index/<?php echo $value->email;?>/<?= $value->id; ?>/<?= $value->tbltype; ?>">Click Here</a> 
              
              
            </div>

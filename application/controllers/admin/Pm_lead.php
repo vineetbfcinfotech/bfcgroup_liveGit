@@ -241,8 +241,10 @@ class Pm_lead extends Admin_controller{
                 $message .="(M) +91 7307088330<br>";
                 $message .="Email: gaurav@bfcpublications.com <br>";
                 $message .="CP - 61| Viraj Khand | Gomti Nagar | Lucknow - 226010<br>";
-                $mail->Username   = 'gaurav@bfcpublications.com';
-                $mail->Password   = 'gaurav@2022';
+                // $mail->Username   = 'gaurav@bfcpublications.com';
+                // $mail->Password   = 'gaurav@2022';
+                $mail->Username   = 'vineet.bfcinfotech@gmail.com';
+                $mail->Password   = 'BFC@2021';
                 $mail->SetFrom('gaurav@bfcpublications.com', "BFC Publications");
                 
             }else if ($staff_id == 61) {
@@ -414,10 +416,17 @@ class Pm_lead extends Admin_controller{
                 'pm_project_status'=>2,
                 'lead_pm_takeup_date'=>date('y-m-d h:i:s'),
             );
+            $tbl_type =  $this->input->post('tbl');
             $this->db->where('id',$id);
-            $data = $this->db->update('tblleads',$data_array);
-                        //notification work
-            $all_data = $this->db->get_where('tblleads',array('id'=>$id))->row();
+            if($tbl_type=='3'){
+                $data = $this->db->update('tblleads_create_package',$data_array);
+                //notification work
+                $all_data = $this->db->get_where('tblleads_create_package',array('id'=>$id))->row();
+            }else{
+                $data = $this->db->update('tblleads',$data_array);
+                //notification work
+                $all_data = $this->db->get_where('tblleads',array('id'=>$id))->row();
+            }
                         $proj_name =  $all_data->lead_author_name.'_'.$all_data->lead_booktitle;
                         $by = $this->session->userdata('staff_user_id');
                         $this->db->select('tblstaff.staffid, tblstaff.role,tblstaff.firstname,tblstaff.lastname, tblroles.*')

@@ -5,8 +5,10 @@ class Asf_controller extends CI_controller{
 	public function __construct(){
         parent::__construct();
     }
-    public function index($value=''){
+    public function index($value='',$leadid="",$tbltype=""){
     	$data['email'] = end($this->uri->segment_array());
+    	$data['tbltype'] = $tbltype;
+		$data['lead_id'] = $leadid;
     	$this->load->view('admin/pc/asf_form',$data);
     }
     public function save_data($value=''){
@@ -14,6 +16,7 @@ class Asf_controller extends CI_controller{
 		// print_r($_POST);die;
 		$this->load->library('phpmailer_lib');
         $mail = $this->phpmailer_lib->load();
+		$tbltype = $_POST['tbltype'];
         $mail->IsSMTP();
         $config['upload_path']          = './assets/asf_authorMail/profilePic';
         $config['allowed_types']        = 'gif|jpg|png|webp';
@@ -122,18 +125,18 @@ class Asf_controller extends CI_controller{
     			'name' => $_POST['author_name'],
     		);
 
-    		$this->db2 = $this->load->database('secend_db', TRUE);
-    		$data_correct = $this->db2->get_where('users',array('user_email'=>$this->input->post('hidden_email')))->row();
-    		//$this->db3 = $this->load->database('dev_db', TRUE);
-    		//$data_correct1 = $this->db3->get_where('users',array('user_email'=>$this->input->post('hidden_email')))->row();
-            // print_r($data_correct);die;
-    		if (empty($data_correct) && empty($data_correct1)) {
-    			 $this->db2->insert('users',$data_array_register);
-    			 //$this->db3->insert('users',$data_array_register);
+    		// $this->db2 = $this->load->database('secend_db', TRUE); 
+    		// $data_correct = $this->db2->get_where('users',array('user_email'=>$this->input->post('hidden_email')))->row();
+    		// //$this->db3 = $this->load->database('dev_db', TRUE);
+    		// //$data_correct1 = $this->db3->get_where('users',array('user_email'=>$this->input->post('hidden_email')))->row();
+            // // print_r($data_correct);die;
+    		// if (empty($data_correct) && empty($data_correct1)) {
+    		// 	 $this->db2->insert('users',$data_array_register);
+    		// 	 //$this->db3->insert('users',$data_array_register);
     			 
-    		}else{
+    		// }else{
 
-    		}
+    		// }
             $to = $this->input->post('hidden_email');
             $subject = 'Registration Successfully';
             
@@ -192,7 +195,11 @@ class Asf_controller extends CI_controller{
     			
     		);
     		$this->db->where('id', $id);
-			$this->db->update('tblleads', $data_array);
+			if($tbltype=='3'){
+				$this->db->update('tblleads_create_package', $data_array);
+			}else{
+				$this->db->update('tblleads', $data_array);
+			}
     		$this->load->helper('download');
 			if($this->uri->segment(3)){
 			    $data   = file_get_contents('./assets/asf_authorMail/'.$filename);
